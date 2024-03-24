@@ -19,24 +19,24 @@ const routes: Routes = [
 				() => import('./shared')
 					.then(m => m.LandingWidgetModule)
 			},
-			{
-				path: 'community',
-				loadChildren: 
-				() => import('./shared')
-					.then(m => m.LandingWidgetModule)
-			},
-			{
-				path: 'schools',
-				loadChildren: 
-				() => import('./shared')
-					.then(m => m.LandingWidgetModule)
-			},
-			{
-				path: 'login',
-				loadChildren: 
-				() => import('./shared')
-					.then(m => m.LandingWidgetModule)
-			}
+			// {
+			// 	path: 'community',
+			// 	loadChildren: 
+			// 	() => import('./shared')
+			// 		.then(m => m.LandingWidgetModule)
+			// },
+			// {
+			// 	path: 'schools',
+			// 	loadChildren: 
+			// 	() => import('./shared')
+			// 		.then(m => m.LandingWidgetModule)
+			// },
+			// {
+			// 	path: 'login',
+			// 	loadChildren: 
+			// 	() => import('./shared')
+			// 		.then(m => m.LandingWidgetModule)
+			// }
 		]
 	}
 ];
