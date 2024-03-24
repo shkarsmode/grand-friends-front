@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
+import { CommonLandingComponentClass } from '../../../../shared';
 
 @Component({
     selector: 'app-main-banner',
@@ -6,4 +7,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     styleUrl: './main-banner.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MainBannerComponent {}
+export class MainBannerComponent extends CommonLandingComponentClass {
+	constructor(inject: Injector) {
+		super(inject);
+	}
+}
+
+

@@ -6,4 +6,5 @@ export enum LandingBlocks {
 	FaqBlock = 'faq-block',
 	AdsBlock = 'ads-block',
 	BenefitsBlock = 'benefits-block',
+	HowItWorksBlock = 'how-it-works-block',
 }

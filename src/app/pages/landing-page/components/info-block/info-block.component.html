@@ -1,1 +1,10 @@
-<p>info-block works!</p>
+<div class="wrap-text">
+	<h2 [innerHTML]="data.title"></h2>
+	<p [innerHTML]="data.description"></p>
+</div>
+
+<img 
+	[src]="imgPath" 
+	[alt]="data.img" 
+	[class.isImgRight]="data.isImgRight"
+	[class.isAdditionalPadding]="data.isAdditionalPadding">

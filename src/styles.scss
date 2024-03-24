@@ -16,9 +16,16 @@ h3,
 h4,
 h5,
 h6 {
+	line-height: normal;
+
 	span.marked {
 		color: #5D05EC;
 	}
+
+}
+
+p {
+	line-height: normal;
 }
 
 h1 {
@@ -42,9 +49,9 @@ h2 {
 }
 
 ::-webkit-scrollbar-thumb {
-	background: #888;
+	background: #221538;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	background: #555;
+	background: #5D05EC;
 }

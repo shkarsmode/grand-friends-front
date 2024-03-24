@@ -17,6 +17,10 @@ ul {
 	li {
 		cursor: pointer;
 
+		.active {
+			color: #5D05EC;
+		}
+
 		> a {
 			display: inline-block;
 			position: relative;
@@ -33,6 +37,10 @@ ul {
 				left: 0;
 				background-color: #221538;
 				transition: all 0.3s ease-in 0s;
+			}
+
+			&.active:after {
+				content: none;
 			}
 
 			&:hover:after {

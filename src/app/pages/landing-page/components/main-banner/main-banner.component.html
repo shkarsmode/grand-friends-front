@@ -1,1 +1,10 @@
-<p>main-banner works!</p>
+<img [src]="imgPath" [alt]="data.img">
+
+<h1 [innerHTML]="data.title"></h1>
+
+<div class="buttons">
+	<img [src]="getImgPath('apple-soon.png')" alt="Apple soon">
+	<img [src]="getImgPath('google-soon.png')" alt="Google soon">
+	<!-- <img [src]="getImgPath('google.png')" alt="Google">
+	<img [src]="getImgPath('google.png')" alt="Google"> -->
+</div>

@@ -1,1 +1,7 @@
-<p>additional-banner-block works!</p>
+<div 
+	class="wrap" 
+	[style.background-image]="'url(' + imgPath + ')'">
+	<h2 [innerHTML]="data.title"></h2>
+	<p [innerHTML]="data.description"></p>
+</div>
+

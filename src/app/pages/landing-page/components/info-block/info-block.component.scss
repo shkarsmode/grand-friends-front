@@ -1,0 +1,25 @@
+:host {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	column-gap: 133px;
+	padding-top: 222px;
+	padding-bottom: 28px;
+	
+	&:has(img:not(.isImgRight)) {
+		flex-direction: row-reverse;
+	}
+	
+	&:has(img.isAdditionalPadding) {
+		padding-bottom: 250px;
+	}
+}
+
+h2, p {
+	max-width: 630px;
+}
+
+h2 {
+	margin-bottom: 30px;
+}

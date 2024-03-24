@@ -6,16 +6,39 @@ const routes: Routes = [
 	{ 
 		path: '', 
 		component: LandingPageComponent,
-		// children: [
-		// 	{
-		// 		path: '', redirectTo: '', pathMatch: 'full' 
-		// 	},
-		// 	// { path: '', component: MainLayoutComponent },
-		// 	// { path: 'about-us', component: AboutUsLayoutComponent },
-		// 	// { path: 'founders-story', component: FounderLayoutComponent },
-		// 	// { path: 'compassionate-use', component: CompassionateLayoutComponent },
-		// ]
-	},
+		children: [
+			{
+				path: '',
+				loadChildren: 
+				() => import('./shared')
+					.then(m => m.LandingWidgetModule)
+			},
+			{
+				path: 'about',
+				loadChildren: 
+				() => import('./shared')
+					.then(m => m.LandingWidgetModule)
+			},
+			{
+				path: 'community',
+				loadChildren: 
+				() => import('./shared')
+					.then(m => m.LandingWidgetModule)
+			},
+			{
+				path: 'schools',
+				loadChildren: 
+				() => import('./shared')
+					.then(m => m.LandingWidgetModule)
+			},
+			{
+				path: 'login',
+				loadChildren: 
+				() => import('./shared')
+					.then(m => m.LandingWidgetModule)
+			}
+		]
+	}
 ];
 
 @NgModule({
