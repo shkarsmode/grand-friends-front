@@ -1,25 +1,56 @@
 :host {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-	column-gap: 133px;
-	padding-top: 222px;
-	padding-bottom: 28px;
-	
-	&:has(img:not(.isImgRight)) {
-		flex-direction: row-reverse;
-	}
-	
-	&:has(img.isAdditionalPadding) {
-		padding-bottom: 250px;
-	}
+    column-gap: 133px;
+    padding-top: 222px;
+    padding-bottom: 28px;
+
+    &:has(img:not(.isImgRight)) {
+        flex-direction: row-reverse;
+    }
+
+    &:has(img.isAdditionalPadding) {
+        padding-bottom: 250px;
+    }
 }
 
-h2, p {
-	max-width: 630px;
+h2,
+p {
+    max-width: 630px;
 }
 
 h2 {
-	margin-bottom: 30px;
+    margin-bottom: 30px;
+}
+
+:host {
+    ::ng-deep {
+        ul {
+            display: flex;
+            flex-direction: column;
+            row-gap: 30px;
+            margin-left: 35px;
+
+            li {
+                position: relative;
+
+                &:before {
+                    content: '✔';
+                    font-weight: 600;
+                    position: absolute;
+                    left: -35px;
+                    color:#5D05EC;
+                }
+            }
+
+            span {
+                color: #5D05EC;
+                display: block;
+                font-weight: 600;
+                margin-bottom: 10px;
+            }
+        }
+    }
 }

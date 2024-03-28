@@ -1,1 +1,16 @@
-<p>how-it-works-block works!</p>
+<h2 [innerHTML]="data.title"></h2>
+<div class="wrap">
+    @for (block of data.blocks; track block.img) {
+        <div class="block">
+            <img 
+                [src]="getImgPath(block.img)" 
+                [alt]="block.img">
+
+            <h4 [innerHTML]="block.title"></h4>
+
+            <p>
+                {{ block.description }}
+            </p>
+        </div>
+    }
+</div>
