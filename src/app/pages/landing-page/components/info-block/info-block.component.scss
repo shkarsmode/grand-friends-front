@@ -41,7 +41,7 @@ h2 {
                     font-weight: 600;
                     position: absolute;
                     left: -35px;
-                    color:#5D05EC;
+                    color: #5D05EC;
                 }
             }
 
@@ -50,6 +50,69 @@ h2 {
                 display: block;
                 font-weight: 600;
                 margin-bottom: 10px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1370px) {
+    .wrap-text {
+        ::ng-deep {
+
+            p,
+            h2 {
+                text-align: center;
+            }
+        }
+    }
+
+    :host {
+        flex-direction: column;
+        gap: 50px;
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    :host:has(img:not(.isImgRight)) {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    img {
+        width: 100%;
+    }
+
+    :host {
+        padding-top: 150px;
+        padding-bottom: 0px;
+
+        &:has(img.isAdditionalPadding) {
+            padding-bottom: 150px;
+        }
+    }
+
+    .wrap-text {
+        ::ng-deep {
+
+            p,
+            h2 {
+                text-align: left;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    :host {
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+
+    .wrap-text {
+        ::ng-deep {
+            p {
+                font-size: 18px;
             }
         }
     }
