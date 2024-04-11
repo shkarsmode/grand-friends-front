@@ -306,11 +306,11 @@ export const landingInfo: ILandingInfo = {
             description:
                 'GrandFriends is more than a platform; it\'s a modern-day salute to the times when listening and storytelling were at the heart of community and education.  <br /><br /> We\'re crafting a legacy with every shared tale.',
             img: 'school-info-group-6.png',
-            isImgRight: true,
+            isImgRight: false,
         },
         {
             tag: LandingBlocks.InfoBlock,
-            title: "Benefits of<span class='marked'>Intergenerational</span> Engagement",
+            title: "Benefits of <span class='marked'>Intergenerational</span> Engagement",
             description:
                 '<ul><li><span>Development of Empathy: </span> Engaging with the GrandFriends platform allows students to experience the profound benefits of intergenerational relationships, which studies have shown to improve emotional intelligence and social understanding* </li> <li><span> Cultural Appreciation: </span> Students gain access to a wealth of knowledge and life experiences, fostering a greater appreciation for history and diversity, with research indicating these interactions enhance cultural competence** </li></ul>',
             img: 'school-info-group-7.png',
