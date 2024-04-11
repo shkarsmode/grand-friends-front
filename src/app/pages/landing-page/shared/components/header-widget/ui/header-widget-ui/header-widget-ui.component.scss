@@ -3,11 +3,15 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 32px 0;
+    padding: 32px 100px;
 }
 
 .logo {
     cursor: pointer;
+}
+
+app-header-widget-burger-ui {
+    display: none;
 }
 
 ul {
@@ -59,6 +63,10 @@ ul {
 @media screen and (max-width: 1040px) {
     ul {
         display: none;
+    }
+
+    app-header-widget-burger-ui {
+        display: block;
     }
 
     .logo {

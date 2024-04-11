@@ -1,0 +1,44 @@
+<div
+    class="burger"
+    [class.open]="isOpenBurger"
+    (click)="toggleNavigation.emit()">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+<div 
+    class="wrap-navigation" 
+    [class.show]="isOpenBurger">
+		<ul (click)="toggleNavigation.emit()">
+            <li style="--i:.0s;">
+                <a 
+                    routerLink="/about" 
+                    routerLinkActive="active">
+                    About
+                </a>
+            </li>
+			<li style="--i:.12s;">
+                <a 
+                    routerLink="/community" 
+                    routerLinkActive="active">
+                    Community
+                </a>
+            </li>
+            <li style="--i:.24s;">
+                <a
+                    routerLink="/schools" 
+                    routerLinkActive="active">
+                    Schools
+                </a>
+            </li>
+            <li style="--i:.48s;">
+                <a 
+                    routerLink="/login" 
+                    routerLinkActive="active">
+                    Login
+                </a>
+            </li>
+		</ul>
+	</div>

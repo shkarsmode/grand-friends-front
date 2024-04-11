@@ -1,5 +1,25 @@
 :host {
-	display: block;
-	width: 100%;
-	max-width: 1284px;
+    display: block;
+    width: 100%;
+    max-width: 1284px;
+}
+
+app-header-widget-ui {
+    width: 100%;
+    height: 90px;
+    position: fixed;
+    top: 0;
+    left: 0px;
+    transition: all .5s;
+    z-index: 1;
+
+    &.out {
+        top: -115px;
+    }
+
+    &.in {
+        top: 0px;
+        background-color: white;
+        box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.05);
+    }
 }
