@@ -54,11 +54,31 @@ ul {
     :host {
         padding: 25px
     }
+
+    ul li {
+        font-size: 18px;
+    }
 }
 
 @media screen and (max-width: 1040px) {
+    :host {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    ul li {
+
+        &:nth-child(1),
+        &:nth-child(2) {
+            font-weight: 500;
+        }
+    }
+
     ul {
-        display: none;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        row-gap: 10px;
     }
 
     .logo {

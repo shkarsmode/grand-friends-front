@@ -67,7 +67,7 @@ body:has(.burger.open) {
 
     h1,
     h2 {
-        font-size: 56px;
+        font-size: 56px !important;
     }
 }
 
@@ -75,7 +75,7 @@ body:has(.burger.open) {
 
     h1,
     h2 {
-        font-size: 45px;
+        font-size: 45px !important;
     }
 }
 
@@ -83,7 +83,7 @@ body:has(.burger.open) {
 
     h1,
     h2 {
-        font-size: 35px;
+        font-size: 35px !important;
     }
 }
 
@@ -91,7 +91,7 @@ body:has(.burger.open) {
 
     h1,
     h2 {
-        font-size: 32px;
+        font-size: 32px !important;
         line-height: 38.4px;
     }
 }

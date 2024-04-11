@@ -86,13 +86,13 @@ h2 {
             }
 
             ul {
-    
+
                 li {
                     text-align: left;
                 }
-    
+
                 span {
-                    text-align:  left;
+                    text-align: left;
                 }
             }
         }
@@ -121,6 +121,12 @@ h2 {
 @media screen and (max-width: 600px) {
     img {
         width: 100%;
+        margin-left: -40px;
+
+        &.isImgRight {
+            margin-right: -40px;
+            margin-left: 0;
+        }
     }
 
     :host {
