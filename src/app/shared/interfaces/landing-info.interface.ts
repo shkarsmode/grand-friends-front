@@ -19,4 +19,5 @@ export interface ILandingBlockInfo {
         title: string;
         description: string;
     }>;
+    isSources?: boolean,
 }
