@@ -60,7 +60,7 @@ export const landingInfo: ILandingInfo = {
     about: [
         {
             tag: LandingBlocks.Banner,
-            title: "<span class='marked'>About Us: <br /></span> The GrandFriends Story",
+            title: "The GrandFriends <span class='marked'>Story</span>",
             img: 'about-us-banner.png',
         },
         {
@@ -105,9 +105,9 @@ export const landingInfo: ILandingInfo = {
         },
         {
             tag: LandingBlocks.AdsBlock,
-            title: 'Join Us in Celebrating Every Story',
+            title: 'Join Us in this Journey',
             description:
-                "GrandFriends is more than a platform; it's a movement towards a more empathetic and connected world. A world where every person's story is valued, where generational divides are bridged through shared narratives, and where the richness of human experience is acknowledged and celebrated. <br /><br /> We invite you to be part of this journey. Share your story, discover the tales of others, and join us in creating a legacy of stories that illuminate the beauty and diversity of life itself. Because a life lived is indeed a million stories waiting to be told.",
+                "Whether you're an individual eager to share your story, a school looking to broaden your students' horizons, or a community center aiming to bridge generational gaps, GrandFriends welcomes you. <br> <br> Together, let's turn every life into a legacy, ensuring that no story goes untold, and no voice, unheard. <br> <br> <b>Because Every Story Matters.</b> ",
             img: 'phone.png',
             bgImg: 'bg-ads-2.png',
             isAdditionalPadding: true,
@@ -116,7 +116,7 @@ export const landingInfo: ILandingInfo = {
     community: [
         {
             tag: LandingBlocks.Banner,
-            title: "Community: Strengthening Our <span class='marked'>Social Fabric</span>",
+            title: "Communities weave our <span class='marked'> <br> Social Fabric</span>",
             img: 'community-banner.png',
         },
         {
@@ -199,7 +199,7 @@ export const landingInfo: ILandingInfo = {
             title: "Why <span class='marked'>GrandFriends</span> is Vital for Communities",
             blocks: [
                 {
-                    img: 'smile.png',
+                    img: 'love-hands.png',
                     title: 'Enriching Lives',
                     description:
                         'Through the exchange of stories and experiences, GrandFriends enriches lives, making communities more inclusive and supportive.',
@@ -220,9 +220,9 @@ export const landingInfo: ILandingInfo = {
         },
         {
             tag: LandingBlocks.AdsBlock,
-            title: 'Join Us in Celebrating Every Story',
+            title: 'Join Us in this Journey',
             description:
-                "GrandFriends is more than a platform; it's a movement towards a more empathetic and connected world. A world where every person's story is valued, where generational divides are bridged through shared narratives, and where the richness of human experience is acknowledged and celebrated. <br /><br /> We invite you to be part of this journey. Share your story, discover the tales of others, and join us in creating a legacy of stories that illuminate the beauty and diversity of life itself. Because a life lived is indeed a million stories waiting to be told.",
+                 "Whether you're an individual eager to share your story, a school looking to broaden your students' horizons, or a community center aiming to bridge generational gaps, GrandFriends welcomes you. <br> <br> Together, let's turn every life into a legacy, ensuring that no story goes untold, and no voice, unheard. <br> <br> <b>Because Every Story Matters.</b> ",
             img: 'phone.png',
             bgImg: 'bg-ads-2.png',
             isAdditionalPadding: true,
