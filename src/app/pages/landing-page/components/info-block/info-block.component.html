@@ -1,6 +1,14 @@
 <div class="wrap-text">
 	<h2 [innerHTML]="data.title"></h2>
 	<p [innerHTML]="data.description"></p>
+	<ol class="sources" *ngIf="data?.isSources"> 
+		<li>
+			* <span class="underline">“The Benefits of Intergenerational Programs”</span> by Generations United
+		</li> 
+		<li>
+			** “Intergenerational Programs and Their Current and Future Challenges” by Journal of Intergenerational Relationships
+		</li>
+	</ol>
 </div>
 
 <img 

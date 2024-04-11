@@ -60,7 +60,7 @@ export const landingInfo: ILandingInfo = {
     about: [
         {
             tag: LandingBlocks.Banner,
-            title: "<span class='marked'>About Us: <br /></span> The GrandFriends Story",
+            title: "The GrandFriends <span class='marked'>Story</span>",
             img: 'about-us-banner.png',
         },
         {
@@ -105,9 +105,9 @@ export const landingInfo: ILandingInfo = {
         },
         {
             tag: LandingBlocks.AdsBlock,
-            title: 'Join Us in Celebrating Every Story',
+            title: 'Join Us in this Journey',
             description:
-                "GrandFriends is more than a platform; it's a movement towards a more empathetic and connected world. A world where every person's story is valued, where generational divides are bridged through shared narratives, and where the richness of human experience is acknowledged and celebrated. <br /><br /> We invite you to be part of this journey. Share your story, discover the tales of others, and join us in creating a legacy of stories that illuminate the beauty and diversity of life itself. Because a life lived is indeed a million stories waiting to be told.",
+                "Whether you're an individual eager to share your story, a school looking to broaden your students' horizons, or a community center aiming to bridge generational gaps, GrandFriends welcomes you. <br> <br> Together, let's turn every life into a legacy, ensuring that no story goes untold, and no voice, unheard. <br> <br> <b>Because Every Story Matters.</b> ",
             img: 'phone.png',
             bgImg: 'bg-ads-2.png',
             isAdditionalPadding: true,
@@ -116,7 +116,7 @@ export const landingInfo: ILandingInfo = {
     community: [
         {
             tag: LandingBlocks.Banner,
-            title: "Community: Strengthening Our <span class='marked'>Social Fabric</span>",
+            title: "Communities weave our <span class='marked'> <br> Social Fabric</span>",
             img: 'community-banner.png',
         },
         {
@@ -199,7 +199,7 @@ export const landingInfo: ILandingInfo = {
             title: "Why <span class='marked'>GrandFriends</span> is Vital for Communities",
             blocks: [
                 {
-                    img: 'smile.png',
+                    img: 'love-hands.png',
                     title: 'Enriching Lives',
                     description:
                         'Through the exchange of stories and experiences, GrandFriends enriches lives, making communities more inclusive and supportive.',
@@ -220,9 +220,133 @@ export const landingInfo: ILandingInfo = {
         },
         {
             tag: LandingBlocks.AdsBlock,
-            title: 'Join Us in Celebrating Every Story',
+            title: 'Join Us in this Journey',
             description:
-                "GrandFriends is more than a platform; it's a movement towards a more empathetic and connected world. A world where every person's story is valued, where generational divides are bridged through shared narratives, and where the richness of human experience is acknowledged and celebrated. <br /><br /> We invite you to be part of this journey. Share your story, discover the tales of others, and join us in creating a legacy of stories that illuminate the beauty and diversity of life itself. Because a life lived is indeed a million stories waiting to be told.",
+                 "Whether you're an individual eager to share your story, a school looking to broaden your students' horizons, or a community center aiming to bridge generational gaps, GrandFriends welcomes you. <br> <br> Together, let's turn every life into a legacy, ensuring that no story goes untold, and no voice, unheard. <br> <br> <b>Because Every Story Matters.</b> ",
+            img: 'phone.png',
+            bgImg: 'bg-ads-2.png',
+            isAdditionalPadding: true,
+        },
+    ],
+    schools: [
+        {
+            tag: LandingBlocks.Banner,
+            title: "<span class='marked'>Weaving Empathy</span> into Education",
+            img: 'schools-banner.png',
+        },
+        {
+            tag: LandingBlocks.AdditionalBanner,
+            title: "Fostering Generational <span class='marked'>Connections</span>",
+            description:
+                'At GrandFriends, we open the door to an enriching experience that transcends the traditional classroom setting. <br /><br /> Our initiative supports schools in fostering a culture where the art of storytelling and genuine connections between generations thrive.',
+            bgImg: 'schools-bg.png',
+        },
+        {
+            tag: LandingBlocks.InfoBlock,
+            title: "<span class='marked'>School</span> Participation",
+            description:
+                'Become a part of the GrandFriends journey, where schools play a supportive role in encouraging a community of sharing, learning, and mutual respect.  <br /><br /> Educators and students together partake in an enriching exchange of life\'s stories and wisdom.',
+            img: 'school-info-group-1.png',
+            isImgRight: true,
+        },
+        {
+            tag: LandingBlocks.InfoBlock,
+            title: "<span class='marked'>Always</span> Available",
+            description:
+                'GrandFriends isn\'t confined to any single device or location. <br /><br /> Accessible through mobile and web browsers, our platform ensures that every student can invite a grandparent, neighbor, aunt, parent — anyone significant in their lives — to share stories, regardless of whether they\'re in the same home, down the street, or across the globe.',
+            img: 'school-info-group-2.png',
+            isImgRight: false,
+        },
+        {
+            tag: LandingBlocks.InfoBlock,
+            title: "<span class='marked'>Generational</span> Bridges",
+            description:
+                'With GrandFriends, students have the freedom to connect with individuals from their personal circles or reach out to seniors seeking companionship in senior living facilities. <br /><br /> Our platform is designed to bridge distances and create heartfelt connections, fostering a sense of belonging and community.',
+            img: 'school-info-group-3.png',
+            isImgRight: true,
+            isAdditionalPadding: true,
+        },
+        {
+            tag: LandingBlocks.HowItWorksBlock,
+            title: 'How It Works',
+            blocks: [
+                {
+                    img: 'comunity.png',
+                    title: 'Welcoming Involvement',
+                    description:
+                        'Schools facilitate the introduction of the GrandFriends platform, allowing students to connect with their wider community.',
+                },
+                {
+                    img: 'contact.png',
+                    title: 'Interactive Storytelling',
+                    description:
+                        'Students reach out to engage with elders, inviting them to share their life experiences, creating a living library of personal histories.',
+                },
+            ],
+        },
+        {
+            tag: LandingBlocks.InfoBlock,
+            title: "The GrandFriends <span class='marked'>Experience</span>",
+            description:
+                '<ul><li><span>Collective Biographies:</span> Students embark on a quest akin to a friendly competition, gathering the rich narratives of those around them, enhancing their sense of empathy and community </li> <li><span>Mastering Dialogue: </span> GrandFriends guides young minds through the nuances of conversation — from asking insightful questions to developing the art of listening. </li></ul>',
+            img: 'school-info-group-4.png',
+            isImgRight: false,
+        },
+        {
+            tag: LandingBlocks.InfoBlock,
+            title: "<span class='marked'> Impact </span> Beyond School Walls",
+            description:
+                '<ul><li><span>Community Engagement:</span> The program extends to visits at local senior centers, where students and seniors create new friendships, enriching both lives and learning through shared experiences. </li> <li><span> Social Enrichment: </span> These visits serve as a powerful antidote to isolation, knitting a fabric of companionship and mutual respect that reverberates through our communities. </li></ul>',
+            img: 'school-info-group-5.png',
+            isImgRight: true,
+        },
+        {
+            tag: LandingBlocks.InfoBlock,
+            title: "<span class='marked'>A Modern Tribute to</span> Timeless Values",
+            description:
+                'GrandFriends is more than a platform; it\'s a modern-day salute to the times when listening and storytelling were at the heart of community and education.  <br /><br /> We\'re crafting a legacy with every shared tale.',
+            img: 'school-info-group-6.png',
+            isImgRight: true,
+        },
+        {
+            tag: LandingBlocks.InfoBlock,
+            title: "Benefits of<span class='marked'>Intergenerational</span> Engagement",
+            description:
+                '<ul><li><span>Development of Empathy: </span> Engaging with the GrandFriends platform allows students to experience the profound benefits of intergenerational relationships, which studies have shown to improve emotional intelligence and social understanding* </li> <li><span> Cultural Appreciation: </span> Students gain access to a wealth of knowledge and life experiences, fostering a greater appreciation for history and diversity, with research indicating these interactions enhance cultural competence** </li></ul>',
+            img: 'school-info-group-7.png',
+            isImgRight: true,
+            isSources: true,
+            isAdditionalPadding: true
+        },
+        {
+            tag: LandingBlocks.HowItWorksBlock,
+            title: "Why <span class='marked'>GrandFriends ?</span>",
+            blocks: [
+                {
+                    img: 'heard.png',
+                    title: 'Character <br> Building',
+                    description:
+                        'Through the exchange of stories and experiences, GrandFriends enriches lives, making communities more inclusive and supportive.',
+                },
+                {
+                    img: 'handshake.png',
+                    title: 'Life-Enhancing <br> Skills',
+                    description:
+                        'We provide real-world interactions that develop essential skills not typically acquired in a classroom setting.',
+                },
+                {
+                    img: 'head-heart.png',
+                    title: 'Community <br> Building',
+                    description:
+                        'As a microcosm of society, schools benefit from GrandFriends by strengthening the societal fabric, paving the way for a more empathetic future.',
+                },
+            ],
+        },
+        {
+            tag: LandingBlocks.AdsBlock,
+            title: 'Join Us in this Journey',
+            description:
+                "Whether you're an individual eager to share your story, a school looking to broaden your students' horizons, or a community center aiming to bridge generational gaps, GrandFriends welcomes you. <br> <br> Together, let's turn every life into a legacy, ensuring that no story goes untold, and no voice, unheard. <br> <br> <b>Because Every Story Matters.</b> ",
             img: 'phone.png',
             bgImg: 'bg-ads-2.png',
             isAdditionalPadding: true,

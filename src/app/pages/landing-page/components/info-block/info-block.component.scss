@@ -25,6 +25,27 @@ h2 {
     margin-bottom: 30px;
 }
 
+.sources {
+    max-width: 600px;
+    padding-left: 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 30px;
+
+    .underline {
+        text-decoration: underline;
+    }
+
+    li {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 19.6px;
+        text-align: left;
+        opacity: .6;
+    }
+}
+
 :host {
     ::ng-deep {
         ul {
@@ -63,6 +84,17 @@ h2 {
             h2 {
                 text-align: center;
             }
+
+            ul {
+    
+                li {
+                    text-align: left;
+                }
+    
+                span {
+                    text-align:  left;
+                }
+            }
         }
     }
 
@@ -76,6 +108,14 @@ h2 {
     :host:has(img:not(.isImgRight)) {
         flex-direction: column;
     }
+
+    .sources {
+        li {
+            text-align: left;
+        }
+    }
+
+
 }
 
 @media screen and (max-width: 600px) {
