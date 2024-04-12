@@ -1,3 +1,4 @@
+import { Injector } from "@angular/core";
 import { LandingBlocks, Reasons } from "../enum";
 
 export interface ILandingInfo { 
@@ -20,5 +21,6 @@ export interface ILandingBlockInfo {
         description: string;
     }>;
     isSources?: boolean,
-    formType?: Reasons
+    formType?: Reasons,
+	injector?: Injector
 }
