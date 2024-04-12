@@ -1,4 +1,4 @@
-import { LandingBlocks } from "../enum";
+import { LandingBlocks, Reasons } from "../enum";
 
 export interface ILandingInfo { 
 	[key: string]: ILandingBlocksInfo
@@ -20,4 +20,5 @@ export interface ILandingBlockInfo {
         description: string;
     }>;
     isSources?: boolean,
+    formType?: Reasons
 }

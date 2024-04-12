@@ -1,16 +1,28 @@
-<div 
-	class="wrap" 
+<div class="main-wrap"
 	[style.background-image]="'url(' + bgImgPath + ')'">
-	<div class="wrap-text">
-		<h2 [innerHTML]="data.title"></h2>
-		<p [innerHTML]="data.description"></p>
-		<div class="buttons">
-			<img [src]="getImgPath('apple-white.png')" alt="Apple">
-			<img [src]="getImgPath('google-white.png')" alt="Apple">
+
+	<div 
+		class="inner-wrap"> 
+	
+		<div class="wrap-text">
+			<h2 [innerHTML]="data.title"></h2>
+			<p [innerHTML]="data.description"></p>
+			<!-- <div class="buttons">
+				<img [src]="getImgPath('apple-white.png')" alt="Apple">
+				<img [src]="getImgPath('google-white.png')" alt="Apple">
+			</div> -->
+			<img 
+				class="phone"
+				[src]="imgPath" 
+				[alt]="data.img">
 		</div>
+	
+		<div class="wrap-form">
+			<app-form [formType]="data.formType || defaultFormType"></app-form>
+		</div>
+
 	</div>
-	<img 
-		class="phone"
-		[src]="imgPath" 
-		[alt]="data.img">
+
+
+
 </div>
