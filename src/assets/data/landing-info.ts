@@ -1,4 +1,4 @@
-import { ILandingInfo, LandingBlocks } from "../../app/shared";
+import { ILandingInfo, LandingBlocks, Reasons } from "../../app/shared";
 
 export const landingInfo: ILandingInfo = {
     home: [
@@ -55,6 +55,7 @@ export const landingInfo: ILandingInfo = {
             img: 'phone.png',
             bgImg: 'bg-ads-1.png',
             isAdditionalPadding: true,
+            formType: Reasons.GeneralInquiry
         },
     ],
     about: [

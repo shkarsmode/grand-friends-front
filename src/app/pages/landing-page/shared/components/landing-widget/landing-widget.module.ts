@@ -5,6 +5,7 @@ import {
 	AdsBlockComponent,
 	BenefitsBlockComponent,
 	FaqBlockComponent,
+	FormComponent,
 	HowItWorksBlockComponent,
 	InfoBlockComponent,
 	MainBannerComponent,
@@ -12,6 +13,7 @@ import {
 import { LandingWidgetRoutingModule } from './landing-widget.routing';
 import { LandingWidgetUiComponent } from './ui';
 import { LandingWidgetComponent } from './view';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -23,8 +25,14 @@ import { LandingWidgetComponent } from './view';
         FaqBlockComponent,
         AdditionalBannerBlockComponent,
         BenefitsBlockComponent,
-		AdsBlockComponent
+		AdsBlockComponent,
+        FormComponent,
     ],
-    imports: [CommonModule, LandingWidgetRoutingModule],
+    imports: [
+        CommonModule, 
+        LandingWidgetRoutingModule,
+        ReactiveFormsModule,
+        FormsModule
+    ],
 })
 export class LandingWidgetModule {}
