@@ -60,12 +60,12 @@ export class LandingWidgetComponent implements OnInit {
         const key = path.length ? path.replace('/', '') : 'home';
 
         this.data = landingInfo[key].map((block: ILandingBlockInfo) => {
-			const injector = this.customInjector(block);
-			const tag = block.tag;
-			return {
-				injector,
-				tag
-			}
-		})
+				const injector = this.customInjector(block);
+				const tag = block.tag;
+				return {
+					injector,
+					tag
+				}
+			})
     }
 }
