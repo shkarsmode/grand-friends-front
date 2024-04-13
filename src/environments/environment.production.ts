@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
     geoPathAPI: 'https://api.geoapify.com/v1/geocode/autocomplete',
-    geoApiKey: '3b23dc57405b446fbbf29846a2d2b6dd',
+    geoApiKey: 'a36f5923f0854507a246b99647d54df2',
 };
