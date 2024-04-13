@@ -6,4 +6,5 @@ export * from './faq-block';
 export * from './how-it-works-block';
 export * from './info-block';
 export * from './main-banner';
+export * from './form';
 

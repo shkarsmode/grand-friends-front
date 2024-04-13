@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, Injector, Input, Type } from '@angular/core';
-import { ILandingBlockInfo, ILandingBlocksInfo, LandingBlocks } from '../../../../../../../shared';
+import { ChangeDetectionStrategy, Component, Input, Type } from '@angular/core';
+import { ILandingBlocksInfo, LandingBlocks } from '../../../../../../../shared';
 
 @Component({
 	selector: 'app-landing-widget-ui',
@@ -10,7 +10,6 @@ import { ILandingBlockInfo, ILandingBlocksInfo, LandingBlocks } from '../../../.
 export class LandingWidgetUiComponent {
 	@Input() public blockData: ILandingBlocksInfo;
 	@Input() public mapping: { [key: string]: Type<any> };
-	@Input() public customInjectorFn: (data: ILandingBlockInfo) => Injector
 	
 	public readonly LandingBlocks: typeof LandingBlocks = LandingBlocks;
 }
