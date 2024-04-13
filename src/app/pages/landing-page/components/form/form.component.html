@@ -7,7 +7,7 @@
     <h2> Contact Us </h2>
 
     <div class="wrap-inputs">
-        <div class="group" data-firstName="true">
+        <div class="group">
             <label for="given-name"> Name* </label>
             <input
                 type="text"
@@ -54,57 +54,65 @@
             <select
                 id="reason"
                 name="reason"
-                #formInput
                 formControlName="reason"
-                tabindex="3">
+                #formInput
+                tabindex="3"
+                (change)="onReasonChange()">
                 <option *ngFor="let reason of reasonData"
-                    [value]="reason"
-                    >
+                    [value]="reason">
                     {{ reason }}
                 </option>
             </select>
         </div>
 
-        <div class="group">
-            <label for="organization">Organization Name*</label>
-            <input
-                type="text" 
-                placeholder="Organization Name"
-                id="organization" 
-                name="organization"
-                autocomplete="organization"
-                formControlName="organization"
-                #formInput
-                tabindex="1">
-        </div> 
+        @if (isFormControlExists("organization")) {
+            <div class="group">
+                <label for="organization">Organization Name*</label>
+                <input
+                    type="text" 
+                    placeholder="Organization Name"
+                    id="organization" 
+                    name="organization"
+                    autocomplete="organization"
+                    formControlName="organization"
+                    #formInput
+                    tabindex="1">
+            </div> 
+        }
+        
+        @if (isFormControlExists("website")) {
+            <div class="group">
+                <label for="website">Organization Website</label>
+                <input
+                    type="url" 
+                    placeholder="www.website.com"
+                    id="website" 
+                    name="website"
+                    autocomplete="website"
+                    formControlName="website"
+                    #formInput
+                    tabindex="1">
+            </div> 
+        }
 
-        <div class="group">
-            <label for="website">Organization Website</label>
-            <input
-                type="url" 
-                placeholder="www.website.com"
-                id="website" 
-                name="website"
-                autocomplete="website"
-                formControlName="organization"
-                #formInput
-                tabindex="1">
-        </div> 
+        @if (isFormControlExists("school")) {
 
-        <div class="group">
-            <label for="school">School Name*</label>
-            <input
-                type="text" 
-                placeholder="School Name"
-                id="school" 
-                name="school"
-                autocomplete="school"
-                formControlName="school"
-                #formInput
-                tabindex="1">
-        </div> 
+            <div class="group">
+                <label for="school">School Name*</label>
+                <input
+                    type="text" 
+                    placeholder="School Name"
+                    id="school" 
+                    name="school"
+                    autocomplete="school"
+                    formControlName="school"
+                    #formInput
+                    tabindex="1">
+            </div> 
+
+        }   
             
-        <div class="group">
+        <!-- <div class="group">
             <label for="c&#8291;ity">Location</label>
     
             <input
@@ -116,10 +124,19 @@
                 required
                 tabindex="4"
                 type="text">
+        </div> -->
+
+        <div class="group">
+            <label for="c&#8291;ity">Location</label>
+            <app-input-location-autocomplete
+                [isValid]="contactForm.get('location')!.valid || !contactForm.get('location')!.dirty"
+                formControlName="location">
+            </app-input-location-autocomplete>
         </div>
     
         <div class="group">
-            <label for="meassage">Details</label>
+            <label for="meassage">Meassage*</label>
+
             <textarea
                 name="meassage"
                 placeholder="For additional details or specific questions"
@@ -134,11 +151,11 @@
         <button
             type="submit"
             [disabled]="!this.contactForm.valid">
-            Submit
+            Send Inquiry
         </button>
     </div>
 
-    <div *ngIf="isSending"></div>
+    <mat-spinner *ngIf="isSending"></mat-spinner>
 </form>
 
 

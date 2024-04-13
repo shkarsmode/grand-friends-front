@@ -45,7 +45,7 @@ form {
 h2 {
     width: 100%;
     font-family: Poppins;
-    font-size: 24px;
+    font-size: 24px  !important;
     font-weight: 600;
     line-height: 33.6px;
     text-align: left !important;
@@ -130,6 +130,7 @@ select {
 textarea {
     resize: vertical;
     min-height: 128px;
+    padding-top: 18px;
 }
 
 input.ng-dirty.ng-invalid,
@@ -183,9 +184,12 @@ mat-spinner {
 // }
 
 
-// @media screen and (max-width: 800px) {
-    
-// }
+@media screen and (max-width: 800px) {
+    input::placeholder
+    textarea::placeholder {
+        font-size: 16px;
+    }   
+}
 
 // @media (max-width: 765px) {
 //     form {

@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Reasons } from '../../../../shared';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { InputLocationAutocompleteComponent } from './components/input-location-autocomplete/input-location-autocomplete.component';
 
 @Component({
   selector: 'app-form',
@@ -12,7 +13,7 @@ export class FormComponent {
     @Input() formType: Reasons = Reasons.GeneralInquiry; 
 
     public contactForm: FormGroup;
-    public reasonData: Array<Reasons> = Object.values(Reasons);
+    public reasonData: Array<string> = Object.values(Reasons);
     public isSending: boolean = false;
 
     constructor(
@@ -21,7 +22,7 @@ export class FormComponent {
 
     ngOnInit(): void {
         this.initContactForm();
-        this.resetFieldsByFormType(this.formType)
+        this.resetFieldsByFormType()
     }
 
     private initContactForm(): void {
@@ -33,30 +34,47 @@ export class FormComponent {
           school: ['', Validators.required],
           organization: ['', Validators.required],
           website: ['',],
-          location: ['', Validators.required],
+          location: [''],
           meassage: ['', Validators.required]
       });
     }
 
-    private resetFieldsByFormType(formType: Reasons) {
-        switch (formType) {
+    private resetFieldsByFormType(): void {
+             
+        switch (this.formType) {
           case Reasons.CommunityEngagement:
-              this.website.enable();
-              this.organization.enable();
-              this.school.disable();
+              this.contactForm.addControl('website', new FormControl(''))
+              this.contactForm.addControl('organization', new FormControl('', Validators.required))
+              if(this.isFormControlExists('school')) this.contactForm.removeControl('school');
             break;
           case Reasons.SchoolEnrollment: 
-              this.website.disable();
-              this.organization.disable();
-              this.school.enable();
+              if(this.isFormControlExists('website')) this.contactForm.removeControl('website');
+              if(this.isFormControlExists('organization')) this.contactForm.removeControl('organization');
+              this.contactForm.addControl('school', new FormControl('', Validators.required));
+            break;
+          default:
+              if(this.isFormControlExists('website')) this.contactForm.removeControl('website')
+              if(this.isFormControlExists('organization')) this.contactForm.removeControl('organization');
+              if(this.isFormControlExists('school')) this.contactForm.removeControl('school');
             break;
         }
     }
 
-    public onContactFormSubmit() {
+    public isFormControlExists(formControlName: string): boolean {
+        return !!this.contactForm.get(formControlName)
+    }
+
+    public onReasonChange(): void {
+        if(this.reason.value === Reasons.GeneralInquiry) this.formType = Reasons.GeneralInquiry;
+        if(this.reason.value === Reasons.CommunityEngagement) this.formType = Reasons.CommunityEngagement;
+        if(this.reason.value === Reasons.SchoolEnrollment) this.formType = Reasons.SchoolEnrollment;
+        this.resetFieldsByFormType();  
+    }
+
+    public onContactFormSubmit(): void {
         this.isSending = true;
         this.contactForm.reset();
-        this.resetFieldsByFormType(this.formType);
+        this.resetFieldsByFormType();
         this.isSending = false;
     }
 
