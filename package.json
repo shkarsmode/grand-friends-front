@@ -4,7 +4,7 @@
     "scripts": {
         "ng": "ng",
         "start": "npm run sharp && ng serve",
-        "build": "npm run sharp && ng build",
+        "build": "npm run sharp && ng build --configuration production",
         "watch": "ng build --watch --configuration development",
         "sharp": "node src/scripts/sharp.js"
     },
