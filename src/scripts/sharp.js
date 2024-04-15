@@ -11,12 +11,12 @@ fs.readdir(directory, (err, files) => {
         return;
     }
 
-    const pngFiles = files.filter(file => file.endsWith('.webp'));
+    const pngFiles = files.filter(file => file.endsWith('.png'));
 
     pngFiles.forEach(async (file) => {
         try {
             const inputPath = `${directory}/${file}`;
-            const outputPath = `${directory}/${file.replace('.webp', '.webp')}`;
+            const outputPath = `${directory}/${file.replace('.png', '.webp')}`;
 
             if (fs.existsSync(outputPath)) {
                 console.log(`${file} already exists in WebP format. Skipping...`);

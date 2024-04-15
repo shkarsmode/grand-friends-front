@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
+import { ReactiveFormsModule } from '@angular/forms';
 import { LandingPageComponent } from './landing-page.component';
 import { LandingPageRoutingModule } from './landing-page.routing';
 import { FooterWidgetModule, HeaderWidgetModule } from './shared';
@@ -14,7 +15,8 @@ import { FooterWidgetModule, HeaderWidgetModule } from './shared';
         CommonModule,
         HeaderWidgetModule,
         FooterWidgetModule,
-		LandingPageRoutingModule
+		LandingPageRoutingModule,
+        ReactiveFormsModule
     ],
 })
 export class LandingPageModule {}
