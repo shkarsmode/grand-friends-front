@@ -1,8 +1,8 @@
-@for (block of blockData; track block.tag) {
+@for (block of blockData; track block) {
 	<ng-container 
 		*ngComponentOutlet="
 			mapping[block.tag]; 
-			injector: customInjectorFn(block);
+			injector: block.injector
 		">
 	</ng-container>
 }

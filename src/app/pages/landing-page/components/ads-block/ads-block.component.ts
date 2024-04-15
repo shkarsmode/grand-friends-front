@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Injector } from '@angular/core';
-import { CommonLandingComponentClass } from '../../../../shared';
+import { CommonLandingComponentClass, Reasons } from '../../../../shared';
 
 @Component({
     selector: 'app-ads-block',
@@ -8,7 +8,12 @@ import { CommonLandingComponentClass } from '../../../../shared';
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AdsBlockComponent extends CommonLandingComponentClass {
+    
+    defaultFormType: Reasons = Reasons.GeneralInquiry;
+    
     constructor(inject: Injector) {
         super(inject);
     }
+
+    
 }
