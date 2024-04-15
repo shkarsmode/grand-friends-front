@@ -1,27 +1,27 @@
 import { CommonModule } from '@angular/common';
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { environment } from '../../../../../../environments/environment';
+import { GEO_API_KEY, GEO_PATH_API } from '../../../../../shared';
+import { AutocompleteHighlightPipe } from '../../../../../shared/pipes/autocomplete-highlight.pipe';
 import {
-	AdditionalBannerBlockComponent,
-	AdsBlockComponent,
-	BenefitsBlockComponent,
-	FaqBlockComponent,
-	FormComponent,
-	HowItWorksBlockComponent,
-	InfoBlockComponent,
-	MainBannerComponent,
+    AdditionalBannerBlockComponent,
+    AdsBlockComponent,
+    BenefitsBlockComponent,
+    FaqBlockComponent,
+    FormComponent,
+    HowItWorksBlockComponent,
+    InfoBlockComponent,
+    MainBannerComponent,
 } from '../../../components';
+import { InputLocationAutocompleteComponent } from '../../../components/form/components/input-location-autocomplete/input-location-autocomplete.component';
+import { LocationAutocompleteService } from '../../../components/form/services/location-autocomplete.service';
 import { LandingWidgetRoutingModule } from './landing-widget.routing';
 import { LandingWidgetUiComponent } from './ui';
 import { LandingWidgetComponent } from './view';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { AutocompleteHighlightPipe } from '../../../../../shared/pipes/autocomplete-highlight.pipe';
-import { InputLocationAutocompleteComponent } from '../../../components/form/components/input-location-autocomplete/input-location-autocomplete.component';
-import { GEO_API_KEY, GEO_PATH_API } from '../../../../../shared';
-import { environment } from '../../../../../../environments/environment';
-import { LocationAutocompleteService } from '../../../components/form/services/location-autocomplete.service';
-import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
     declarations: [
@@ -49,9 +49,8 @@ import {MatIconModule} from '@angular/material/icon';
     ],
     providers: [
         LocationAutocompleteService,
-        // Provide values for injection tokens
         { provide: GEO_PATH_API, useValue: environment.geoPathAPI },
         { provide: GEO_API_KEY, useValue: environment.geoApiKey }
-      ]
+    ]
 })
 export class LandingWidgetModule {}
