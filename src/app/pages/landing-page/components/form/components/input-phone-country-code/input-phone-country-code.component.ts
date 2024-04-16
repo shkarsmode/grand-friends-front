@@ -1,6 +1,6 @@
-import { Component, ElementRef, HostListener, Inject, ViewChild, forwardRef } from '@angular/core';
+import { Component, ElementRef, HostListener, Inject, Input, ViewChild, forwardRef } from '@angular/core';
 import { ICountryCode } from '../../../../../../shared';
-import { ControlValueAccessor, FormControl, FormControlName, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, FormControl, FormControlName, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
 import { debounceTime } from 'rxjs';
 
 @Component({
@@ -16,7 +16,6 @@ import { debounceTime } from 'rxjs';
   ],
 })
 export class InputPhoneCountryCodeComponent implements ControlValueAccessor {
-
   @ViewChild('phoneWrap') phoneWrap: ElementRef;
   
   @HostListener('document:click', ['$event']) onClickOutside(event: MouseEvent) {
@@ -35,7 +34,7 @@ export class InputPhoneCountryCodeComponent implements ControlValueAccessor {
 
   ngOnInit(): void {
       this.initCurrentCountry();
-      this.phoneInput = new FormControl('');
+      this.phoneInput = new FormControl('', Validators.maxLength(25));
   }
 
   ngAfterViewInit(): void {

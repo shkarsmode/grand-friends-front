@@ -4,7 +4,7 @@
 
     <div class="label-wrap">
         <label for="tel-national">Phone number </label>
-        <span class="error-message"> </span>
+        <span></span>
     </div>
 
     <div class="input-wrap" #phoneWrap>
@@ -19,9 +19,9 @@
         <input
             id="tel-national"
             name="tel-national" autocomplete="tel-national"
-            #formInput
+            class="formInput"
             placeholder="XXX-XXX-XXXX"
-            tabindex="5"
+            tabindex="3"
             type="text"
             [formControl]="phoneInput">
     

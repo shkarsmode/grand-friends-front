@@ -8,50 +8,48 @@
 
     <div class="wrap-inputs">
         <div class="group">
-            <label for="given-name"> Name* </label>
+            <div class="label-wrap">
+                <label for="tel-national">Name* </label>
+                <div *ngIf="name.invalid && (name.dirty || name.touched)" class="error-message">
+                    <span *ngIf="name.errors?.['required']">*Required</span>
+                    <span *ngIf="name.errors?.['minlength']">*Too short</span>
+                    <span *ngIf="name.errors?.['maxLength']">*Too long</span>
+                </div>
+            </div>
             <input
                 type="text"
-                id="given-name"
-                name="given-name"
-                autocomplete="given-name"
+                id="name"
+                name="name"
+                autocomplete="name"
                 formControlName="name"
-                placeholder="John"
-                tabindex="2"
-                #formInput>
+                placeholder="John Lock"
+                tabindex="1"
+                class="formInput">
         </div>
     
         <div class="group">
-            <label for="email">Email Address*</label>
+            <div class="label-wrap">
+                <label for="email">Email Address*</label>
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error-message">
+                    <span *ngIf="email.errors?.['required']">*Required</span>
+                    <span *ngIf="email.errors?.['email']">*Invalid email</span>
+                    <span *ngIf="email.errors?.['maxLength']">*Too long</span>
+                </div>
+            </div>
             <input
                 id="email"
                 name="email"
                 placeholder="name@example.com"
-                #formInput
+                class="formInput"
                 autocomplete="on"
                 formControlName="email"
                 required
-                tabindex="6"
+                tabindex="2"
                 type="email">
-        </div>
-            
-        <!-- <div class="group">
-            <label for="tel-national">Phone number </label>
-        
-            <input
-                name="tel-national" autocomplete="tel-national"
-                #formInput
-                formControlName="phone"
-                placeholder="xxx-xxx-xxxx"
-                required
-                tabindex="5"
-                type="text">
-    
-        </div> -->
+        </div> 
+             
+        <app-input-phone-country-code formControlName="phone">
 
-        
-        <app-input-phone-country-code
-            formControlName="phone">
-            
         </app-input-phone-country-code>
     
         <div class="group" data-select="true">
@@ -60,8 +58,8 @@
                 id="reason"
                 name="reason"
                 formControlName="reason"
-                #formInput
-                tabindex="3"
+                class="formInput"
+                tabindex="4"
                 (change)="onReasonChange()">
                 <option *ngFor="let reason of reasonData"
                     [value]="reason">
@@ -72,7 +70,13 @@
 
         @if (isFormControlExists("organization")) {
             <div class="group">
-                <label for="organization">Organization Name*</label>
+                <div class="label-wrap">
+                    <label for="organization">Organization Name*</label>
+                    <div *ngIf="organization.invalid && (organization.dirty || organization.touched)" class="error-message">
+                        <span *ngIf="organization.errors?.['required']">*Required</span>
+                        <span *ngIf="organization.errors?.['maxLength']">*Too long</span>
+                    </div>
+                </div>
                 <input
                     type="text" 
                     placeholder="Organization Name"
@@ -80,14 +84,18 @@
                     name="organization"
                     autocomplete="organization"
                     formControlName="organization"
-                    #formInput
-                    tabindex="1">
+                    class="formInput"
+                    tabindex="5">
             </div> 
         }
         
         @if (isFormControlExists("website")) {
             <div class="group">
-                <label for="website">Organization Website</label>
+                <label for="website"> Organization Website</label>
+                <div *ngIf="website.invalid && (website.dirty || website.touched)" class="error-message">
+                    <span *ngIf="website.errors?.['url']">*Invalid URL format</span>
+                    <span *ngIf="website.errors?.['maxLength']">*Too long</span>
+                </div>
                 <input
                     type="url" 
                     placeholder="www.website.com"
@@ -95,15 +103,21 @@
                     name="website"
                     autocomplete="website"
                     formControlName="website"
-                    #formInput
-                    tabindex="1">
+                    class="formInput"
+                    tabindex="5">
             </div> 
         }
 
         @if (isFormControlExists("school")) {
 
             <div class="group">
-                <label for="school">School Name*</label>
+                <div class="label-wrap">
+                    <label for="school">School Name*</label>
+                    <div *ngIf="school.invalid && (school.dirty || school.touched)" class="error-message">
+                        <span *ngIf="school.errors?.['maxLength']">*Too long</span>
+                        <span *ngIf="school.errors?.['required']">*Required</span>
+                    </div>
+                </div>
                 <input
                     type="text" 
                     placeholder="School Name"
@@ -111,8 +125,8 @@
                     name="school"
                     autocomplete="school"
                     formControlName="school"
-                    #formInput
-                    tabindex="1">
+                    class="formInput"
+                    tabindex="5">
             </div> 
 
         }   
@@ -126,13 +140,20 @@
         </div>
     
         <div class="group">
-            <label for="meassage">Meassage*</label>
-
+            <div class="label-wrap">
+                <label for="message">Message*</label>
+                <div *ngIf="message.invalid && (message.dirty || message.touched)" class="error-message">
+                    <span *ngIf="message.errors?.['maxLength']">*Too long</span>
+                    <span *ngIf="message.errors?.['required']">*Required</span>
+                </div>
+            </div>
             <textarea
-                name="meassage"
+                id="message"
+                name="message"
+                class="formInput"
                 placeholder="For additional details or specific questions"
-                formControlName="meassage"
-                tabindex="2">
+                formControlName="message"
+                tabindex="5">
             </textarea>
         </div>
         
@@ -161,7 +182,7 @@
                     placeholder="Company name"
                     id="company" name="company"
                     formControlName="companyName"
-                    #formInput>
+                    class="formInput">
             </div> 
         
             <div class="group" data-select="true">
@@ -171,7 +192,7 @@
                     [ngClass]="{'select-placeholder_active': isFunctionPlaceholder}"
                     (change)="deactiveFunctionSelectPlaceholder()"
                     name="function"
-                    #formInput
+                    class="formInput"
                     formControlName="function"
                     tabindex="3">
                 <option value="" disabled selected hidden id="placeholder">Select</option>
@@ -190,7 +211,7 @@
                 <input
                     id="position"
                     name="position"
-                    #formInput
+                    class="formInput"
                     formControlName="position"
                     placeholder="Role"
                     required
