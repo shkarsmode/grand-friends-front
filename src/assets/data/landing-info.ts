@@ -4,7 +4,7 @@ export const landingInfo: ILandingInfo = {
     home: [
         {
             tag: LandingBlocks.MainBanner,
-            title: "<span class='marked'>Weaving Stories</span> Together to Create the <span class='marked'>Social Fabric</span> of Our Lives",
+            title: "Weaving Stories <span class='marked'>Together</span> to Create the Social Fabric of Our Lives",
             img: 'main-banner.webp',
         },
         {
