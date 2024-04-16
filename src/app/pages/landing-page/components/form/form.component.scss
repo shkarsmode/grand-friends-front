@@ -154,7 +154,9 @@ textarea {
     padding-top: 18px;
 }
 
+input.ng-invalid.ng-dirty,
 input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-dirty,
 textarea.ng-invalid.ng-touched {
     border: 1px solid rgba(222, 0, 93, 1) !important;
 }
@@ -201,9 +203,14 @@ mat-spinner {
 }
 
 @media screen and (max-width: 800px) {
-    input::placeholder
-    textarea::placeholder {
-        font-size: 16px;
-    }   
+    
+    :host {
+        
+        input::placeholder
+        textarea::placeholder {
+            font-size: 12px !important;
+        }
+    } 
+       
 }
 

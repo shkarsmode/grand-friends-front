@@ -90,12 +90,15 @@
         }
         
         @if (isFormControlExists("website")) {
+
             <div class="group" [@slideAndBlur]>
-                <label for="website"> Organization Website</label>
+
+                <label for="website">Organization Website</label>
                 <div *ngIf="website.invalid && (website.dirty || website.touched)" class="error-message">
-                    <span *ngIf="website.errors?.['url']">*Invalid URL format</span>
+                    <span *ngIf="website.errors?.['url']">*Invalid URL</span>
                     <span *ngIf="website.errors?.['maxLength']">*Too long</span>
                 </div>
+
                 <input
                     type="url" 
                     placeholder="www.website.com"
@@ -169,55 +172,4 @@
 
     <mat-spinner *ngIf="isSending"></mat-spinner>
 </form>
-
-
-<!--  <div
-                class="group"
-                data-company="true">
-                <label for="company">Organization</label>
-                <input
-                    autocomplete="organization"
-                    tabindex="1"
-                    type="text" required
-                    placeholder="Company name"
-                    id="company" name="company"
-                    formControlName="companyName"
-                    class="formInput">
-            </div> 
-        
-            <div class="group" data-select="true">
-                <label for="function">Function</label>
-                <select
-                    id="function"
-                    [ngClass]="{'select-placeholder_active': isFunctionPlaceholder}"
-                    (change)="deactiveFunctionSelectPlaceholder()"
-                    name="function"
-                    class="formInput"
-                    formControlName="function"
-                    tabindex="3">
-                <option value="" disabled selected hidden id="placeholder">Select</option>
-                <option *ngFor="let function of functionInputData"
-                    [value]="function">
-                    {{ function }}
-                </option>
-                </select>
-            </div>
-
-
-             <div class="group">
-                <label for="position">
-                    Position
-                </label>
-                <input
-                    id="position"
-                    name="position"
-                    class="formInput"
-                    formControlName="position"
-                    placeholder="Role"
-                    required
-                    tabindex="4"
-                    type="text">
-            </div>
--->
-
 

@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Reasons } from '../../../../shared';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { Reasons, urlValidator } from '../../../../shared';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
@@ -40,10 +40,6 @@ export class FormComponent {
         this.contactForm.valueChanges.subscribe(body => console.log(body));
     }
 
-    ngAfterViewInit(): void {
-        this.initTabindexes();
-    }
-
     private initContactForm(): void {
       this.contactForm = this.fb.group({
           name: ['', [ Validators.required, Validators.maxLength(200), Validators.minLength(3)]],
@@ -52,23 +48,17 @@ export class FormComponent {
           reason: [this.formType, Validators.required],
           school: ['', [Validators.required, Validators.maxLength(200)]],
           organization: ['', [Validators.required, Validators.maxLength(200)]],
-          website: ['', this.urlValidator()],
+          website: ['', urlValidator()],
           location: [''],
           message: ['', [Validators.required, Validators.maxLength(500)]]
       });
-    }
-
-    initTabindexes() {
-      const formInputs = document.querySelectorAll('.formInput');
-      console.log(formInputs);
-      
     }
 
     private resetFieldsByFormType(): void {
              
         switch (this.formType) {
           case Reasons.CommunityEngagement:
-              this.contactForm.addControl('website', new FormControl('', [Validators.required, this.urlValidator()]))
+              this.contactForm.addControl('website', new FormControl('', [Validators.required, urlValidator()]))
               this.contactForm.addControl('organization', new FormControl('',[ Validators.required, Validators.maxLength(200)]))
               if(this.isFormControlExists('school')) this.contactForm.removeControl('school');
             break;
@@ -76,7 +66,6 @@ export class FormComponent {
               if(this.isFormControlExists('website')) this.contactForm.removeControl('website');
               if(this.isFormControlExists('organization')) this.contactForm.removeControl('organization');
               this.contactForm.addControl('school', new FormControl('', [Validators.required, Validators.maxLength(200)]));
-              
             break;
           default:
               if(this.isFormControlExists('website')) this.contactForm.removeControl('website')
@@ -96,35 +85,17 @@ export class FormComponent {
         if(this.reason.value === Reasons.CommunityEngagement) this.formType = Reasons.CommunityEngagement;
         if(this.reason.value === Reasons.SchoolEnrollment) this.formType = Reasons.SchoolEnrollment;
         this.resetFieldsByFormType();  
-        this.initTabindexes();
-        const formInputs = document.querySelectorAll('.formInput');
-        console.log(formInputs);
     }
 
     public onContactFormSubmit(): void {
         this.isSending = true;
         this.contactForm.reset();
         this.resetFieldsByFormType();
+        this.reason.setValue(this.formType);
         this.isSending = false;
     }   
 
     
-
-
-// Custom URL validator function
-    private urlValidator(): ValidatorFn {
-      return (control: AbstractControl): { [key: string]: any } | null => {
-        try {
-          let url = new URL(control.value);
-        } catch (error) {
-          return { 'url': { value: control.value } }; 
-        }
-        return null;
-      };
-    }
-
-
-
   public get name(): FormControl {
     return this.contactForm.get('name') as FormControl;
   }

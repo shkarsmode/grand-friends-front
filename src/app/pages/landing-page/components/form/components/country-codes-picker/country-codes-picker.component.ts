@@ -55,15 +55,15 @@ export class CountryCodesPickerComponent {
     
         const target = event.target as HTMLElement;
         const countryOption = target.closest('.country-option');
-        let dialCode = null;
+        let countryName = null;
         let country = null;
 
         if (countryOption) {
-          dialCode = countryOption.getAttribute('data-dial-code');
+          countryName = countryOption.getAttribute('data-country-name');
         }
         
-        if(dialCode) {
-          country = this.findCountryByCode(dialCode);
+        if(countryName) {
+          country = this.findCountryByName(countryName);
         }
 
         if(country) {
@@ -72,8 +72,8 @@ export class CountryCodesPickerComponent {
   }
 
 
-  public findCountryByCode(code: string): ICountryCode | null{
-      return this.countryCodes.find(el => el.name == code) || null;
+  public findCountryByName(name: string): ICountryCode | null{
+      return this.countryCodes.find(el => el.name == name) || null;
   }
 
 
