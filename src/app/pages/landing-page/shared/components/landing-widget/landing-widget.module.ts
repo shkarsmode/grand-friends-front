@@ -23,15 +23,6 @@ import { LocationAutocompleteService } from '../../../components/form/services/l
 import { LandingWidgetRoutingModule } from './landing-widget.routing';
 import { LandingWidgetUiComponent } from './ui';
 import { LandingWidgetComponent } from './view';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { AutocompleteHighlightPipe } from '../../../../../shared/pipes/autocomplete-highlight.pipe';
-import { InputLocationAutocompleteComponent } from '../../../components/form/components/input-location-autocomplete/input-location-autocomplete.component';
-import { GEO_API_KEY, GEO_PATH_API } from '../../../../../shared';
-import { environment } from '../../../../../../environments/environment';
-import { LocationAutocompleteService } from '../../../components/form/services/location-autocomplete.service';
-import {MatIconModule} from '@angular/material/icon';
 import { InputPhoneCountryCodeComponent } from '../../../components/form/components/input-phone-country-code/input-phone-country-code.component';
 
 @NgModule({
