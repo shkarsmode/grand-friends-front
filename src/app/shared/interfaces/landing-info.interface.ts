@@ -22,5 +22,6 @@ export interface ILandingBlockInfo {
     }>;
     isSources?: boolean,
     formType?: Reasons,
-	injector?: Injector
+	injector?: Injector,
+    showMoreLink?: string, 
 }

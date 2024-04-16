@@ -9,10 +9,51 @@
 			** “Intergenerational Programs and Their Current and Future Challenges” by Journal of Intergenerational Relationships
 		</li>
 	</ol>
+	
+	@if(isShowMore) {
+		
+		@if(switchImgAndButton) {
+			<img 
+				[src]="imgPath" 
+				[alt]="data.img" 
+				[class.isImgRight]="data.isImgRight"
+				[class.isAdditionalPadding]="data.isAdditionalPadding">
+		} @else {
+			<app-common-button
+				(click)="onShowMoreClick()">
+				Show more
+			</app-common-button>
+		}
+		
+	} 
+	
+	
 </div>
 
-<img 
-	[src]="imgPath" 
-	[alt]="data.img" 
-	[class.isImgRight]="data.isImgRight"
-	[class.isAdditionalPadding]="data.isAdditionalPadding">
+
+@if(isShowMore) {
+		
+	@if(switchImgAndButton) {
+		<app-common-button
+			(click)="onShowMoreClick()">
+			Show more
+		</app-common-button>
+	} @else {
+		<img 
+			[src]="imgPath" 
+			[alt]="data.img" 
+			[class.isImgRight]="data.isImgRight"
+			[class.isAdditionalPadding]="data.isAdditionalPadding">
+	}
+	
+} @else {
+	<img 
+		[src]="imgPath" 
+		[alt]="data.img" 
+		[class.isImgRight]="data.isImgRight"
+		[class.isAdditionalPadding]="data.isAdditionalPadding">
+}
+
+
+
+

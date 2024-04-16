@@ -21,6 +21,7 @@ export const landingInfo: ILandingInfo = {
                 "At the core of GrandFriends is a vision where every person's journey is honored and preserved. From the laughter of youth to the reflections of age, we believe in capturing the essence of life's stories. <br /><br />Our mission extends beyond mere conversation; it's about building a repository of human experience, the largest collection of personal biographies, told in the words of those who lived them. Because a life lived is indeed a million stories waiting to be embraced.",
             img: 'info-group-1.webp',
             isImgRight: true,
+            showMoreLink: '/about'
         },
         {
             tag: LandingBlocks.InfoBlock,
@@ -37,6 +38,7 @@ export const landingInfo: ILandingInfo = {
                 "Our platform stands as a beacon for communities striving to weave tighter bonds of understanding and respect. <br /><br />By inviting seniors, cultural centers, and city organizations to join, we foster an environment where every elder's story is a lesson, and every young listener, a keeper of legacy. GrandFriends revitalizes the social fabric, one story at a time.",
             img: 'info-group-3.webp',
             isImgRight: true,
+            showMoreLink: '/community'
         },
         {
             tag: LandingBlocks.InfoBlock,
@@ -46,14 +48,15 @@ export const landingInfo: ILandingInfo = {
             img: 'info-group-4.webp',
             isImgRight: false,
             isAdditionalPadding: true,
+            showMoreLink: '/schools'
         },
         {
             tag: LandingBlocks.AdsBlock,
             title: 'Join Us in this Journey',
             description:
                 "Whether you're an individual eager to share your story, a school looking to broaden your students' horizons, or a community center aiming to bridge generational gaps, GrandFriends welcomes you. <br /><br /> Together, let's turn every life into a legacy, ensuring that no story goes untold, and no voice, unheard. <br /><br /> <strong>Because Every Story Matters.</strong>",
-            img: 'phone.webp',
-            bgImg: 'bg-ads-1.webp',
+            img: 'phone-order.png',
+            bgImg: 'bg-ads-2.webp',
             isAdditionalPadding: true,
             formType: Reasons.GeneralInquiry
         },
@@ -109,7 +112,7 @@ export const landingInfo: ILandingInfo = {
             title: 'Join Us in this Journey',
             description:
                 "Whether you're an individual eager to share your story, a school looking to broaden your students' horizons, or a community center aiming to bridge generational gaps, GrandFriends welcomes you. <br> <br> Together, let's turn every life into a legacy, ensuring that no story goes untold, and no voice, unheard. <br> <br> <b>Because Every Story Matters.</b> ",
-            img: 'phone.webp',
+            img: 'phone-order.png',
             bgImg: 'bg-ads-2.webp',
             isAdditionalPadding: true,
             formType: Reasons.GeneralInquiry
@@ -225,7 +228,7 @@ export const landingInfo: ILandingInfo = {
             title: 'Join Us in this Journey',
             description:
                  "Whether you're an individual eager to share your story, a school looking to broaden your students' horizons, or a community center aiming to bridge generational gaps, GrandFriends welcomes you. <br> <br> Together, let's turn every life into a legacy, ensuring that no story goes untold, and no voice, unheard. <br> <br> <b>Because Every Story Matters.</b> ",
-            img: 'phone.webp',
+            img: 'phone-order.png',
             bgImg: 'bg-ads-2.webp',
             isAdditionalPadding: true,
             formType: Reasons.CommunityEngagement
@@ -350,7 +353,7 @@ export const landingInfo: ILandingInfo = {
             title: 'Join Us in this Journey',
             description:
                 "Whether you're an individual eager to share your story, a school looking to broaden your students' horizons, or a community center aiming to bridge generational gaps, GrandFriends welcomes you. <br> <br> Together, let's turn every life into a legacy, ensuring that no story goes untold, and no voice, unheard. <br> <br> <b>Because Every Story Matters.</b> ",
-            img: 'phone.webp',
+            img: 'phone-order.png',
             bgImg: 'bg-ads-2.webp',
             isAdditionalPadding: true,
             formType: Reasons.SchoolEnrollment

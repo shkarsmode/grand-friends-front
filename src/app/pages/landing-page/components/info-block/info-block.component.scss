@@ -46,6 +46,11 @@ h2 {
     }
 }
 
+app-common-button {
+    text-align: left;
+    margin-top: 40px;
+}
+
 :host {
     ::ng-deep {
         ul {
@@ -95,12 +100,16 @@ h2 {
                     text-align: left;
                 }
             }
+
+            
+        }
+        img {
+            margin-top: 40px;
         }
     }
 
     :host {
         flex-direction: column;
-        gap: 50px;
         padding-left: 25px;
         padding-right: 25px;
     }
@@ -115,6 +124,13 @@ h2 {
         }
     }
 
+    app-common-button {
+        text-align: center;
+    }
+
+    img {
+        margin-top: 40px;
+    }
 
 }
 
