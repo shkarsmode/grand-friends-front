@@ -63,7 +63,7 @@ export class CountryCodesPickerComponent {
         }
         
         if(dialCode) {
-          country = this.findCountryByDialCode(dialCode);
+          country = this.findCountryByCode(dialCode);
         }
 
         if(country) {
@@ -72,8 +72,8 @@ export class CountryCodesPickerComponent {
   }
 
 
-  public findCountryByDialCode(dialCode: string): ICountryCode | null{
-      return this.countryCodes.find(el => el.dial_code == dialCode) || null;
+  public findCountryByCode(code: string): ICountryCode | null{
+      return this.countryCodes.find(el => el.name == code) || null;
   }
 
 

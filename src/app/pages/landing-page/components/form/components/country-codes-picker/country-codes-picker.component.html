@@ -24,7 +24,7 @@
         @for (country of searchedCountries; track country.code; let i = $index ) {
 
             <div class="country-option"
-                [attr.data-dial-code]="country.dial_code"> 
+                [attr.data-dial-code]="country.name"> 
                 <img [src]="'https://flagsapi.com/'+country.code+'/flat/24.png'" alt="flag">
                 <span class="country-name"> {{ country.name }}</span>
                 <span class="dial-code">{{ country.dial_code }}</span>
@@ -42,7 +42,7 @@
         @for (country of countryCodes; track country.code; let i = $index ) {
 
             <div class="country-option" 
-                [attr.data-dial-code]="country.dial_code">
+                [attr.data-dial-code]="country.name">
 
                 <img [src]="'https://flagsapi.com/'+country.code+'/flat/24.png'" alt="flag">
                 <span class="country-name"> {{ country.name }}</span>
