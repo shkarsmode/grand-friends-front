@@ -34,7 +34,7 @@
                 type="email">
         </div>
             
-        <div class="group">
+        <!-- <div class="group">
             <label for="tel-national">Phone number </label>
         
             <input
@@ -46,8 +46,13 @@
                 tabindex="5"
                 type="text">
     
-        </div>
-    
+        </div> -->
+
+        
+        <app-input-phone-country-code
+            formControlName="phone">
+            
+        </app-input-phone-country-code>
     
         <div class="group" data-select="true">
             <label for="reason">Reason*</label>
@@ -111,20 +116,6 @@
             </div> 
 
         }   
-            
-        <!-- <div class="group">
-            <label for="c&#8291;ity">Location</label>
-    
-            <input
-                id="location"
-                name="location"
-                #formInput
-                formControlName="location"
-                placeholder="Enter City and State"
-                required
-                tabindex="4"
-                type="text">
-        </div> -->
 
         <div class="group">
             <label for="c&#8291;ity">Location</label>

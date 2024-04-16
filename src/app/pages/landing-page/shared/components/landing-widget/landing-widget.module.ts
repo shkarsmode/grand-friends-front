@@ -1,3 +1,4 @@
+import { CountryCodesPickerComponent } from './../../../components/form/components/country-codes-picker/country-codes-picker.component';
 import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import {
@@ -22,6 +23,7 @@ import { GEO_API_KEY, GEO_PATH_API } from '../../../../../shared';
 import { environment } from '../../../../../../environments/environment';
 import { LocationAutocompleteService } from '../../../components/form/services/location-autocomplete.service';
 import {MatIconModule} from '@angular/material/icon';
+import { InputPhoneCountryCodeComponent } from '../../../components/form/components/input-phone-country-code/input-phone-country-code.component';
 
 @NgModule({
     declarations: [
@@ -36,6 +38,8 @@ import {MatIconModule} from '@angular/material/icon';
 		AdsBlockComponent,
         FormComponent,
         InputLocationAutocompleteComponent,
+        CountryCodesPickerComponent,
+        InputPhoneCountryCodeComponent,
     ],
     imports: [
         CommonModule, 

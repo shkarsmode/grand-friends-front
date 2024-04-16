@@ -5,7 +5,6 @@ import { LandingPageComponent } from './landing-page.component';
 import { LandingPageRoutingModule } from './landing-page.routing';
 import { FooterWidgetModule, HeaderWidgetModule } from './shared';
 
-
 @NgModule({
     declarations: [
         LandingPageComponent,

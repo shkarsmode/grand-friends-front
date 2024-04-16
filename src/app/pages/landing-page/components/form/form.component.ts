@@ -1,12 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { Reasons } from '../../../../shared';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { InputLocationAutocompleteComponent } from './components/input-location-autocomplete/input-location-autocomplete.component';
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrl: './form.component.scss',
+  
 })
 export class FormComponent { 
 
@@ -22,7 +22,8 @@ export class FormComponent {
 
     ngOnInit(): void {
         this.initContactForm();
-        this.resetFieldsByFormType()
+        this.resetFieldsByFormType();
+        this.contactForm.valueChanges.subscribe(body => console.log(body));
     }
 
     private initContactForm(): void {

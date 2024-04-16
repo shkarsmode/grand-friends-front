@@ -1,0 +1,39 @@
+
+
+<div class="group">
+
+    <div class="label-wrap">
+        <label for="tel-national">Phone number </label>
+        <span class="error-message"> </span>
+    </div>
+
+    <div class="input-wrap" #phoneWrap>
+    
+        <div class="country-code"
+            (click)="isDropdown = !isDropdown">
+            <img [src]="'https://flagsapi.com/'+currentCountry.code+'/flat/24.png'" alt="flag" class="flag">
+            <span class="dial-code">{{ currentCountry.dial_code }}</span>
+            <img src="assets/img/carat-icon.png" alt="" class="carat">
+        </div>
+        
+        <input
+            id="tel-national"
+            name="tel-national" autocomplete="tel-national"
+            #formInput
+            placeholder="XXX-XXX-XXXX"
+            tabindex="5"
+            type="text"
+            [formControl]="phoneInput">
+    
+        <div class="countries-dropdown" 
+            [ngStyle]="{'display': isDropdown ? 'block' : 'none'}">
+            <app-country-codes-picker
+                (onCountryChange)="onCountryChange($event)">
+            </app-country-codes-picker>
+        </div>
+   </div>
+
+ 
+    
+</div>
+
