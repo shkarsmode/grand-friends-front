@@ -1,12 +1,26 @@
 import { Component, Input } from '@angular/core';
 import { Reasons } from '../../../../shared';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrl: './form.component.scss',
-  
+  animations: [
+    trigger('slideAndBlur', [
+      state('void', style({
+        transform: 'translateX(20px)',
+        filter: 'blur(8px)'
+      })),
+      state('*', style({
+        transform: 'translateX(0)',
+        filter: 'blur(0)'
+      })),
+      transition('void => *', animate('0.4s')),
+      transition('* => void', animate('0.4s'))
+    ])
+  ]
 })
 export class FormComponent { 
 

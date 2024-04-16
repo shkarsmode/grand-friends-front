@@ -69,7 +69,7 @@
         </div>
 
         @if (isFormControlExists("organization")) {
-            <div class="group">
+            <div class="group" [@slideAndBlur]>
                 <div class="label-wrap">
                     <label for="organization">Organization Name*</label>
                     <div *ngIf="organization.invalid && (organization.dirty || organization.touched)" class="error-message">
@@ -90,7 +90,7 @@
         }
         
         @if (isFormControlExists("website")) {
-            <div class="group">
+            <div class="group" [@slideAndBlur]>
                 <label for="website"> Organization Website</label>
                 <div *ngIf="website.invalid && (website.dirty || website.touched)" class="error-message">
                     <span *ngIf="website.errors?.['url']">*Invalid URL format</span>
@@ -110,7 +110,7 @@
 
         @if (isFormControlExists("school")) {
 
-            <div class="group">
+            <div class="group" [@slideAndBlur]>
                 <div class="label-wrap">
                     <label for="school">School Name*</label>
                     <div *ngIf="school.invalid && (school.dirty || school.touched)" class="error-message">
