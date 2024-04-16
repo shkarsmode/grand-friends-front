@@ -24,6 +24,7 @@ import { LandingWidgetRoutingModule } from './landing-widget.routing';
 import { LandingWidgetUiComponent } from './ui';
 import { LandingWidgetComponent } from './view';
 import { InputPhoneCountryCodeComponent } from '../../../components/form/components/input-phone-country-code/input-phone-country-code.component';
+import { CommonButtonComponent } from '../../../../../shared/ui/common-button/common-button.component';
 
 @NgModule({
     declarations: [
@@ -40,6 +41,7 @@ import { InputPhoneCountryCodeComponent } from '../../../components/form/compone
         InputLocationAutocompleteComponent,
         CountryCodesPickerComponent,
         InputPhoneCountryCodeComponent,
+
     ],
     imports: [
         CommonModule, 
@@ -50,6 +52,7 @@ import { InputPhoneCountryCodeComponent } from '../../../components/form/compone
         MatAutocompleteModule,
         AutocompleteHighlightPipe,
         MatIconModule,
+        CommonButtonComponent,
     ],
     providers: [
         LocationAutocompleteService,

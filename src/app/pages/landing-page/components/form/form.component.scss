@@ -161,27 +161,27 @@ textarea.ng-invalid.ng-touched {
     border: 1px solid rgba(222, 0, 93, 1) !important;
 }
 
-button {
-    width: 100%;
-    max-width: 240px;
-    height: 72px;
-    background-color: #5D05EC;
-    outline: none;
-    border-radius: 8px;
+// button {
+//     width: 100%;
+//     max-width: 240px;
+//     height: 72px;
+//     background-color: #5D05EC;
+//     outline: none;
+//     border-radius: 8px;
  
-    color: #FFFFFF;
-    font-family: Poppins;
-    font-size: 18px;
-    font-weight: 600;
-    line-height: 23.4px;
+//     color: #FFFFFF;
+//     font-family: Poppins;
+//     font-size: 18px;
+//     font-weight: 600;
+//     line-height: 23.4px;
     
 
-    &[disabled] {
-        opacity: 0.4;
-        pointer-events: none;
-        user-select: none;
-    }
-}
+//     &[disabled] {
+//         opacity: 0.4;
+//         pointer-events: none;
+//         user-select: none;
+//     }
+// }
 
 .wrap-btn {
     display: flex;
@@ -205,7 +205,7 @@ mat-spinner {
 @media screen and (max-width: 800px) {
     
     :host {
-        
+
         input::placeholder
         textarea::placeholder {
             font-size: 12px !important;
