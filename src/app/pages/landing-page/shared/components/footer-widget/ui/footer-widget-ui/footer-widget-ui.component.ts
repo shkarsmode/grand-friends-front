@@ -9,15 +9,10 @@ import { Router } from '@angular/router';
 })
 export class FooterWidgetUiComponent {
 
-    constructor(private router: Router) {
+    constructor(private router: Router) {}
 
+    public navigateTo(path: string ) {
+        this.router.navigate([path])
     }
 
-    public goToPrivacyPolicy(): void {
-        this.router.navigate(['/privacy'])
-    }
-
-    public goToTermsConditions(): void {
-        this.router.navigate(['/terms'])
-    }
 }

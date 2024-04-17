@@ -18,10 +18,17 @@
     cursor: pointer;
 }
 
-ul {
+.desktop {
     display: flex;
-    column-gap: 50px;
+    column-gap: 50px; 
+}
 
+.mobile {
+    display: none;
+}
+
+.desktop, 
+.mobile {
     li {
         cursor: pointer;
 
@@ -29,7 +36,7 @@ ul {
             color: #5D05EC;
         }
 
-        >a {
+        > a {
             display: inline-block;
             position: relative;
             text-decoration: unset;
@@ -59,34 +66,71 @@ ul {
 }
 
 @media screen and (max-width: 1365px) {
-    :host {
-        padding: 25px
-    }
-
+  
     ul li {
         font-size: 18px;
     }
 }
 
-@media screen and (max-width: 1040px) {
+@media screen and (max-width: 1000px) {
+    // :host {
+    //     flex-direction: column;
+    //     gap: 15px;
+    // }
+
+    // ul li {
+
+    //     &:nth-child(1),
+    //     &:nth-child(2) {
+    //         font-weight: 500;
+    //     }
+    // }
+
+    // ul {
+    //     flex-wrap: wrap;
+    //     align-items: center;
+    //     justify-content: center;
+    //     row-gap: 10px;
+    // }
+
     :host {
+        padding: 0;
+    }
+
+    .desktop {
+        display: none;
+    }
+
+    .wrap {
+        display: flex;
         flex-direction: column;
-        gap: 15px;
+        padding: 48px 10px;
+        gap: 40px;
+        border-top: 1px solid rgba(229, 226, 234, 1);
     }
 
-    ul li {
-
-        &:nth-child(1),
-        &:nth-child(2) {
-            font-weight: 500;
-        }
-    }
-
-    ul {
-        flex-wrap: wrap;
+    .mobile  {
+        display: flex;
+        flex-direction: column;
         align-items: center;
-        justify-content: center;
-        row-gap: 10px;
+        gap: 24px;
+        
+        li {
+            font-weight: 600;
+
+            
+        }
+
+        li:last-child {
+            margin-top: 48px;
+            font-family: Poppins;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 23.4px;
+            text-align: center;
+        }
+
+        
     }
 
     .logo {
@@ -100,8 +144,8 @@ ul {
     }
 }
 
-@media screen and (max-width: 550px) {
-    :host {
-        padding: 20px;
-    }
-}
+// @media screen and (max-width: 550px) {
+//     :host {
+//         padding: 20px;
+//     }
+// }

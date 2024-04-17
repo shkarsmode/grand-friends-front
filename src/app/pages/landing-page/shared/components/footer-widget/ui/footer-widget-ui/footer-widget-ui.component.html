@@ -3,14 +3,40 @@
 		<svg-icon src="assets/svg/logo.svg"></svg-icon>
 	</div>
 	
-	<ul>
+	<ul class="desktop">
 		<li>
-			<a 	(click)="goToTermsConditions()">
+			<a 	(click)="navigateTo('/terms')">
 				Terms of Use
 			</a>
 		</li>
 		<li>
-			<a 	(click)="goToPrivacyPolicy()">
+			<a 	(click)="navigateTo('/privacy')">
+				Privacy Policy
+			</a>
+		</li>
+		<li style="cursor: default;">
+			© 2024 GrandFriends
+		</li>
+	</ul>
+
+	<ul class="mobile">
+		<li>
+			<a (click)="navigateTo('/about')">
+				About
+			</a>
+		</li>
+		<li >
+			<a (click)="navigateTo('/community')">
+				Community
+			</a>
+		</li>
+		<li >
+			<a (click)="navigateTo('/schools')">
+				Schools
+			</a>
+		</li>
+		<li>
+			<a 	(click)="navigateTo('/privacy')">
 				Privacy Policy
 			</a>
 		</li>
