@@ -89,6 +89,7 @@ export class FormComponent {
     }
 
     public onContactFormSubmit(): void {
+        if(!this.contactForm.valid) return  
         this.isSending = true;
         this.contactForm.reset();
         this.resetFieldsByFormType();

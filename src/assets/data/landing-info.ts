@@ -55,7 +55,7 @@ export const landingInfo: ILandingInfo = {
             title: 'Join Us in this Journey',
             description:
                 "Whether you're an individual eager to share your story, a school looking to broaden your students' horizons, or a community center aiming to bridge generational gaps, GrandFriends welcomes you. <br /><br /> Together, let's turn every life into a legacy, ensuring that no story goes untold, and no voice, unheard. <br /><br /> <strong>Because Every Story Matters.</strong>",
-            img: 'phone-order.png',
+            img: 'phone2.webp',
             bgImg: 'bg-ads-2.webp',
             isAdditionalPadding: true,
             formType: Reasons.GeneralInquiry
@@ -112,7 +112,7 @@ export const landingInfo: ILandingInfo = {
             title: 'Join Us in this Journey',
             description:
                 "Whether you're an individual eager to share your story, a school looking to broaden your students' horizons, or a community center aiming to bridge generational gaps, GrandFriends welcomes you. <br> <br> Together, let's turn every life into a legacy, ensuring that no story goes untold, and no voice, unheard. <br> <br> <b>Because Every Story Matters.</b> ",
-            img: 'phone-order.png',
+            img: 'phone2.webp',
             bgImg: 'bg-ads-2.webp',
             isAdditionalPadding: true,
             formType: Reasons.GeneralInquiry
@@ -228,7 +228,7 @@ export const landingInfo: ILandingInfo = {
             title: 'Join Us in this Journey',
             description:
                  "Whether you're an individual eager to share your story, a school looking to broaden your students' horizons, or a community center aiming to bridge generational gaps, GrandFriends welcomes you. <br> <br> Together, let's turn every life into a legacy, ensuring that no story goes untold, and no voice, unheard. <br> <br> <b>Because Every Story Matters.</b> ",
-            img: 'phone-order.png',
+            img: 'phone2.webp',
             bgImg: 'bg-ads-2.webp',
             isAdditionalPadding: true,
             formType: Reasons.CommunityEngagement
@@ -353,7 +353,7 @@ export const landingInfo: ILandingInfo = {
             title: 'Join Us in this Journey',
             description:
                 "Whether you're an individual eager to share your story, a school looking to broaden your students' horizons, or a community center aiming to bridge generational gaps, GrandFriends welcomes you. <br> <br> Together, let's turn every life into a legacy, ensuring that no story goes untold, and no voice, unheard. <br> <br> <b>Because Every Story Matters.</b> ",
-            img: 'phone-order.png',
+            img: 'phone2.webp',
             bgImg: 'bg-ads-2.webp',
             isAdditionalPadding: true,
             formType: Reasons.SchoolEnrollment
