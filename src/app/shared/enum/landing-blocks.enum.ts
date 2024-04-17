@@ -7,4 +7,6 @@ export enum LandingBlocks {
 	AdsBlock = 'ads-block',
 	BenefitsBlock = 'benefits-block',
 	HowItWorksBlock = 'how-it-works-block',
+	PrivacyPolicyBlock = 'privacy-policy',
+	TermsConditionsBlock = 'terms-conditions'
 }

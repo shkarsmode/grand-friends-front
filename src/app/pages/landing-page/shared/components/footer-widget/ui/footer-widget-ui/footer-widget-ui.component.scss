@@ -1,9 +1,17 @@
 :host {
+    display: block;
+    width: 100%;
+    background-color: rgba(248, 244, 255, 1);
+}
+
+.wrap {
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     padding: 32px 0;
+    max-width: 1284px;
 }
 
 .logo {

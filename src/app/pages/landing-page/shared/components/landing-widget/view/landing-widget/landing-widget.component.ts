@@ -20,7 +20,9 @@ import {
 	HowItWorksBlockComponent,
 	InfoBlockComponent,
 	MainBannerComponent,
+	PrivacyPolicyComponent,
 } from '../../../../../components';
+import { TermsConditionsComponent } from '../../../../../components/terms-conditions';
 
 @Component({
     selector: 'app-landing-widget',
@@ -39,6 +41,8 @@ export class LandingWidgetComponent implements OnInit {
         [LandingBlocks.BenefitsBlock]: BenefitsBlockComponent,
         [LandingBlocks.HowItWorksBlock]: HowItWorksBlockComponent,
         [LandingBlocks.AdditionalBanner]: AdditionalBannerBlockComponent,
+        [LandingBlocks.PrivacyPolicyBlock]: PrivacyPolicyComponent,
+		[LandingBlocks.TermsConditionsBlock]: TermsConditionsComponent,
     };
 
     private readonly location: Location = inject(Location);

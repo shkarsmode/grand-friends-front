@@ -32,6 +32,18 @@ const routes: Routes = [
 					.then(m => m.LandingWidgetModule)
 			},
 			{
+				path: 'privacy',
+				loadChildren: 
+				() => import('./shared')
+					.then(m => m.LandingWidgetModule)
+			},
+			{
+				path: 'terms',
+				loadChildren: 
+				() => import('./shared')
+					.then(m => m.LandingWidgetModule)
+			},
+			{
 				path: 'login',
 				loadChildren: 
 				() => import('./shared')

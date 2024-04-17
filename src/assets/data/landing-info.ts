@@ -359,4 +359,14 @@ export const landingInfo: ILandingInfo = {
             formType: Reasons.SchoolEnrollment
         },
     ],
+    privacy: [
+        {
+            tag: LandingBlocks.PrivacyPolicyBlock 
+        }
+    ],
+    terms: [
+        {
+            tag: LandingBlocks.TermsConditionsBlock, 
+        }
+    ]
 };

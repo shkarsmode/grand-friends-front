@@ -17,6 +17,8 @@ import {
     HowItWorksBlockComponent,
     InfoBlockComponent,
     MainBannerComponent,
+    PrivacyPolicyComponent,
+    TermsConditionsComponent
 } from '../../../components';
 import { InputLocationAutocompleteComponent } from '../../../components/form/components/input-location-autocomplete/input-location-autocomplete.component';
 import { LocationAutocompleteService } from '../../../components/form/services/location-autocomplete.service';
@@ -41,7 +43,8 @@ import { CommonButtonComponent } from '../../../../../shared/ui/common-button/co
         InputLocationAutocompleteComponent,
         CountryCodesPickerComponent,
         InputPhoneCountryCodeComponent,
-
+        PrivacyPolicyComponent,
+        TermsConditionsComponent,
     ],
     imports: [
         CommonModule, 
