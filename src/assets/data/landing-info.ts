@@ -11,7 +11,7 @@ export const landingInfo: ILandingInfo = {
             tag: LandingBlocks.AdditionalBanner,
             title: "Where <span class='marked'>Every Story</span> Matters",
             description:
-                "GrandFriends is a groundbreaking platform born from a simple, yet profound belief: every life is a tapestry of stories waiting to be told. In an age where digital connections often overshadow personal ones, we're on a mission to reverse the tide. <br /><br />GrandFriends bridges generations, turning moments into memories and wisdom into shared treasures.",
+                "In an age where digital connections can sometimes feel fleeting, we're on a mission to create lasting ones.  <br /><br /> GrandFriends bridges generations, turning treasured moments into lasting memories by prompting meaningful conversations and fostering the sharing of wisdom as treasured keepsakes.",
             bgImg: 'bg-banner-1.webp',
         },
         {
