@@ -18,7 +18,14 @@
 		</div>
 	
 		<div class="wrap-form">
-			<app-form [formType]="data.formType || defaultFormType"></app-form>
+			@if (!isFormSubmited) {	
+				<app-form 
+					[formType]="data.formType || defaultFormType"
+					(submited)="listenFormSubmiting()">
+				</app-form>
+			} @else {
+				<app-confirmation></app-confirmation>
+			}
 		</div>
 
 	</div>

@@ -9,11 +9,15 @@ import { CommonLandingComponentClass, Reasons } from '../../../../shared';
 })
 export class AdsBlockComponent extends CommonLandingComponentClass {
     
-    defaultFormType: Reasons = Reasons.GeneralInquiry;
+    public defaultFormType: Reasons = Reasons.GeneralInquiry;
+    public isFormSubmited: boolean = false;
     
     constructor(inject: Injector) {
         super(inject);
     }
-
     
+    public listenFormSubmiting(): void {
+        console.log('emited');
+        this.isFormSubmited = true
+    }
 }

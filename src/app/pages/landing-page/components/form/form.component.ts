@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Reasons, urlValidator } from '../../../../shared';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { animate, state, style, transition, trigger } from '@angular/animations';
@@ -25,6 +25,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 export class FormComponent { 
 
     @Input() formType: Reasons = Reasons.GeneralInquiry; 
+    @Output() submited: EventEmitter<any> = new EventEmitter();
 
     public contactForm: FormGroup;
     public reasonData: Array<string> = Object.values(Reasons);
@@ -93,6 +94,7 @@ export class FormComponent {
         this.resetFieldsByFormType();
         this.reason.setValue(this.formType);
         this.isSending = false;
+        this.submited.emit();
     }   
 
     

@@ -6,27 +6,33 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { environment } from '../../../../../../environments/environment';
-import { GEO_API_KEY, GEO_PATH_API } from '../../../../../shared';
-import { AutocompleteHighlightPipe } from '../../../../../shared/pipes/autocomplete-highlight.pipe';
+
 import {
     AdditionalBannerBlockComponent,
     AdsBlockComponent,
     BenefitsBlockComponent,
     FaqBlockComponent,
-    FormComponent,
     HowItWorksBlockComponent,
     InfoBlockComponent,
     MainBannerComponent,
     PrivacyPolicyComponent,
-    TermsConditionsComponent
-} from '../../../components';
-import { InputLocationAutocompleteComponent } from '../../../components/form/components/input-location-autocomplete/input-location-autocomplete.component';
-import { LocationAutocompleteService } from '../../../components/form/services/location-autocomplete.service';
+    TermsConditionsComponent,
+    FormComponent,
+    InputLocationAutocompleteComponent,
+    InputPhoneCountryCodeComponent,    
+    LocationAutocompleteService,
+} from '@landing-blocks';
+
+import { CommonButtonComponent, ConfirmationComponent,} from '@shared/ui'
+
+import {AutocompleteHighlightPipe} from '@shared/pipes'
+
+import { GEO_API_KEY, GEO_PATH_API } from '@shared/tokens';
+
+
 import { LandingWidgetRoutingModule } from './landing-widget.routing';
 import { LandingWidgetUiComponent } from './ui';
 import { LandingWidgetComponent } from './view';
-import { InputPhoneCountryCodeComponent } from '../../../components/form/components/input-phone-country-code/input-phone-country-code.component';
-import { CommonButtonComponent } from '../../../../../shared/ui/common-button/common-button.component';
 
 @NgModule({
     declarations: [
@@ -56,6 +62,7 @@ import { CommonButtonComponent } from '../../../../../shared/ui/common-button/co
         AutocompleteHighlightPipe,
         MatIconModule,
         CommonButtonComponent,
+        ConfirmationComponent,
     ],
     providers: [
         LocationAutocompleteService,
