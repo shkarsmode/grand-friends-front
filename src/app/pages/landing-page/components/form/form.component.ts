@@ -116,10 +116,9 @@ export class FormComponent {
         })
     }
     
-    // naveenmurugan@gmail.com
     private getDataForContactFormRequest(): IContactFormRequest {
         return {
-          email: 'maximbarishov06@gmail.com',
+          email: 'naveenmurugan@gmail.com',
           data: { ...this.contactForm.value }
         }
     }
