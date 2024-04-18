@@ -1,8 +1,10 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
-import { IContactForm, IContactFormRequest, Reasons, urlValidator } from '../../../../shared';
+import { IContactForm, IContactFormRequest, IGeoLocation, Reasons, urlValidator } from '../../../../shared';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { ContactFormService } from './services';
+import { locationValidator } from '@shared/helpers/location.validator';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-form',
@@ -32,8 +34,8 @@ export class FormComponent {
     public reasonData: Array<string> = Object.values(Reasons);
     public isSending: boolean = false;
     public isSubmitError: boolean = false;
+    // private allowedLocations: IGeoLocation[] = [];
 
-   
     constructor(
         private fb: FormBuilder,
         private contactFormService: ContactFormService,
@@ -43,6 +45,7 @@ export class FormComponent {
     ngOnInit(): void {
         this.initContactForm();
         this.resetFieldsByFormType();
+        this.contactForm.valueChanges.subscribe(res => console.log(this.contactForm.value));
     }
 
     private initContactForm(): void {
@@ -53,8 +56,8 @@ export class FormComponent {
           reason: [this.formType, Validators.required],
           school: ['', [Validators.required, Validators.maxLength(200)]],
           organization: ['', [Validators.required, Validators.maxLength(200)]],
-          website: ['', urlValidator()],
-          location: [''],
+          website: ['', [urlValidator()]],
+          location: ['', ],
           message: ['', [Validators.required, Validators.maxLength(500)]]
       });
     }
@@ -131,7 +134,7 @@ export class FormComponent {
         this.cdr.detectChanges();
     }
 
-    
+   
   public get name(): FormControl {
     return this.contactForm.get('name') as FormControl;
   }

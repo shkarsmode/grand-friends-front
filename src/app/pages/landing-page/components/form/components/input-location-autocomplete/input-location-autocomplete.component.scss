@@ -1,3 +1,4 @@
+
 .wrap-select {
     display: flex;
     align-items: center;
@@ -24,9 +25,9 @@
     }
 }
 
-.invalid {
-    border: 1px solid rgba(222, 0, 93, 1)
-}
+// .invalid {
+//     border: 1px solid rgba(222, 0, 93, 1)
+// }
 
 .icon span {
     color: #444444;
@@ -35,3 +36,15 @@
 ::ng-deep .mat-mdc-option .mdc-list-item__primary-text {
     width: 100%;
 }
+
+input {
+    position: relative;
+}
+
+mat-spinner {
+    position: absolute;
+    width: 20px !important;
+    right: 30px;
+    top: 13.5px;
+}
+

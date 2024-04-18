@@ -136,10 +136,13 @@
 
         }   
 
+        <!-- [isValid]="contactForm.get('location')!.valid || !contactForm.get('location')!.dirty" -->
         <div class="group">
-            <label for="c&#8291;ity">Location</label>
+            <div class="label-wrap">
+                <label for="location">Location</label>
+            </div>
+ 
             <app-input-location-autocomplete
-                [isValid]="contactForm.get('location')!.valid || !contactForm.get('location')!.dirty"
                 formControlName="location">
             </app-input-location-autocomplete>
         </div>

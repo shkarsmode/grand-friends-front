@@ -1,13 +1,14 @@
+    
 <input
-    required
-    placeholder="C&#8291;ity"
+    placeholder="Enter City and State"
     autocomplete="off"
     tabindex="5"
-    id="c&#8291;ity"
+    id="location"
     [matAutocomplete]="auto"
-    [class.invalid]="!isValid"
-    class="formInput"
-    (input)="onChangeLocation($event)">
+    #formInput
+    [(ngModel)]="value"
+    (input)="onChangeLocation($event)"
+    (blur)="_onInputBlur()">
     <mat-autocomplete #auto="matAutocomplete">
         @for (place of autocompleteLocations; track place.formatted) {
             <mat-option
@@ -29,3 +30,7 @@
         }
         
     </mat-autocomplete>
+
+
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+

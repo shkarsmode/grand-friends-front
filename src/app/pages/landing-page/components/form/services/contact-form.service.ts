@@ -14,8 +14,10 @@ export class ContactFormService {
     @Inject(BASE_PATH_API) private basePathApi: string
   ) { } 
 
+  // https://grand-friends-back.vercel.app/api/test-message
+  // https://grand-friends-back.vercel.app/api/auth/test-mail
   public submitContactForm(data: IContactFormRequest): Observable<any> {
-      return this.httpClient.post<any>(this.basePathApi, data)
+      return this.httpClient.post<any>(this.basePathApi+'/auth/test-mail', data)
   }
 
 }
