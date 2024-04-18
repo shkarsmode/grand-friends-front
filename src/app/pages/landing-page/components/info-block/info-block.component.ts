@@ -16,8 +16,6 @@ export class InfoBlockComponent extends CommonLandingComponentClass {
         private cdr: ChangeDetectorRef
     ) {
         super(inject);
-        console.log(this.data);
-
     }
 
     ngOnInit(): void {

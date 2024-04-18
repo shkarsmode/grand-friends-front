@@ -93,11 +93,13 @@
 
             <div class="group" [@slideAndBlur]>
 
-                <label for="website">Organization Website</label>
-                <div *ngIf="website.invalid && (website.dirty || website.touched)" class="error-message">
-                    <span *ngIf="website.errors?.['url']">*Invalid URL</span>
-                    <span *ngIf="website.errors?.['maxLength']">*Too long</span>
+                <div class="label-wrap">
+                    <label for="website">Organization Website</label>
+                    <div *ngIf="website.invalid" class="error-message">
+                        <span *ngIf="website.errors?.['url']">*Invalid URL</span>
+                    </div>
                 </div>
+               
 
                 <input
                     type="url" 

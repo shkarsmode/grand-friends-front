@@ -33,6 +33,7 @@ export class FormComponent {
     public isSending: boolean = false;
     public isSubmitError: boolean = false;
 
+   
     constructor(
         private fb: FormBuilder,
         private contactFormService: ContactFormService,
@@ -42,7 +43,6 @@ export class FormComponent {
     ngOnInit(): void {
         this.initContactForm();
         this.resetFieldsByFormType();
-        this.contactForm.valueChanges.subscribe(body => console.log(body));
     }
 
     private initContactForm(): void {
@@ -63,7 +63,7 @@ export class FormComponent {
              
         switch (this.formType) {
           case Reasons.CommunityEngagement:
-              this.contactForm.addControl('website', new FormControl('', [Validators.required, urlValidator()]))
+              this.contactForm.addControl('website', new FormControl('', [urlValidator()]))
               this.contactForm.addControl('organization', new FormControl('',[ Validators.required, Validators.maxLength(200)]))
               if(this.isFormControlExists('school')) this.contactForm.removeControl('school');
             break;
