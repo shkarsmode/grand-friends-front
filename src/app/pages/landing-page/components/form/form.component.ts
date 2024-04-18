@@ -1,7 +1,8 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Reasons, urlValidator } from '../../../../shared';
+import { ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
+import { IContactForm, IContactFormRequest, Reasons, urlValidator } from '../../../../shared';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { animate, state, style, transition, trigger } from '@angular/animations';
+import { ContactFormService } from './services';
 
 @Component({
   selector: 'app-form',
@@ -30,9 +31,12 @@ export class FormComponent {
     public contactForm: FormGroup;
     public reasonData: Array<string> = Object.values(Reasons);
     public isSending: boolean = false;
+    public isSubmitError: boolean = false;
 
     constructor(
         private fb: FormBuilder,
+        private contactFormService: ContactFormService,
+        private cdr: ChangeDetectorRef,
     ) {}
 
     ngOnInit(): void {
@@ -89,14 +93,43 @@ export class FormComponent {
     }
 
     public onContactFormSubmit(): void {
-        if(!this.contactForm.valid) return  
+        if(!this.contactForm.valid) return;  
         this.isSending = true;
+
+        let data = this.getDataForContactFormRequest();
+
+        this.contactFormService.submitContactForm(data).subscribe(
+          {
+          next: (res) => {
+            console.log(res);
+            this.handleFormAfterSubmit();
+          },
+          error: (error: any) => { 
+            console.log(error);
+            this.isSubmitError = true;
+            this.isSending = false;
+            this.cdr.detectChanges();
+          }
+        })
+    }
+    
+    // naveenmurugan@gmail.com
+    private getDataForContactFormRequest(): IContactFormRequest {
+        return {
+          email: 'maximbarishov06@gmail.com',
+          data: { ...this.contactForm.value }
+        }
+    }
+
+    private handleFormAfterSubmit(): void {
+        this.isSubmitError = false;
+        this.isSending = false;
         this.contactForm.reset();
         this.resetFieldsByFormType();
         this.reason.setValue(this.formType);
-        this.isSending = false;
         this.submited.emit();
-    }   
+        this.cdr.detectChanges();
+    }
 
     
   public get name(): FormControl {

@@ -168,11 +168,9 @@
             (click)="onContactFormSubmit()">
             Send Inquiry
         </app-common-button>
-        <!-- <button
-            type="submit"
-            [disabled]="!this.contactForm.valid">
-            Send Inquiry
-        </button> -->
+        <div *ngIf="isSubmitError" class="error-message">
+            <span>*Something went wrong, try again latter</span>
+        </div>
     </div>
 
     <mat-spinner *ngIf="isSending"></mat-spinner>

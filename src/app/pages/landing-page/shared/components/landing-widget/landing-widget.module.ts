@@ -21,13 +21,18 @@ import {
     InputLocationAutocompleteComponent,
     InputPhoneCountryCodeComponent,    
     LocationAutocompleteService,
+    ContactFormService,
 } from '@landing-blocks';
 
 import { CommonButtonComponent, ConfirmationComponent,} from '@shared/ui'
 
 import {AutocompleteHighlightPipe} from '@shared/pipes'
 
-import { GEO_API_KEY, GEO_PATH_API } from '@shared/tokens';
+import { 
+    GEO_API_KEY, 
+    GEO_PATH_API,
+    BASE_PATH_API, 
+} from '@shared/tokens';
 
 
 import { LandingWidgetRoutingModule } from './landing-widget.routing';
@@ -66,8 +71,10 @@ import { LandingWidgetComponent } from './view';
     ],
     providers: [
         LocationAutocompleteService,
+        ContactFormService, 
         { provide: GEO_PATH_API, useValue: environment.geoPathAPI },
-        { provide: GEO_API_KEY, useValue: environment.geoApiKey }
+        { provide: GEO_API_KEY, useValue: environment.geoApiKey },
+        { provide: BASE_PATH_API, useValue: environment.basePathApi }, 
     ]
 })
 export class LandingWidgetModule {}
