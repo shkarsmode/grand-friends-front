@@ -46,7 +46,6 @@ export class InputLocationAutocompleteComponent
 
   public onChangeLocation(event: Event): void {
 
-        console.log('value changes', event.target);
         const newValue = (event.target as HTMLInputElement).value;
         this.writeValue(newValue);
         this._onChange(this.value);

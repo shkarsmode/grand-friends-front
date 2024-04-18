@@ -45,7 +45,7 @@ export class FormComponent {
     ngOnInit(): void {
         this.initContactForm();
         this.resetFieldsByFormType();
-        this.contactForm.valueChanges.subscribe(res => console.log(this.contactForm.value));
+        // this.contactForm.valueChanges.subscribe(res => console.log(this.contactForm.value));
     }
 
     private initContactForm(): void {
