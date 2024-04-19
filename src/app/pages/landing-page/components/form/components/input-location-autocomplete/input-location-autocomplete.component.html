@@ -6,7 +6,7 @@
     id="location"
     [matAutocomplete]="auto"
     #formInput
-    [(ngModel)]="value"
+    [value]="value"
     (input)="onChangeLocation($event)"
     (blur)="_onInputBlur()">
     <mat-autocomplete #auto="matAutocomplete">
