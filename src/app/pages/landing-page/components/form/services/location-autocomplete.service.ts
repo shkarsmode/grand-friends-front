@@ -52,8 +52,9 @@ export class LocationAutocompleteService {
     // Helper method to extract unique city names
     private getUniqueCities(locations: IGeoLocation[]): IGeoLocation[] {
         const uniqueCities = new Map<string, IGeoLocation>();
+        console.log(locations);
         locations.forEach((location) => {
-            const cityKey = location.city?.toLowerCase();
+            const cityKey = location.formatted?.toLowerCase();
             if (!uniqueCities.has(cityKey)) {
                 uniqueCities.set(cityKey, location);
             }
