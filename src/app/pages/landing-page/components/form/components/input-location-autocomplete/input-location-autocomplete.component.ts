@@ -4,13 +4,12 @@ import {
     Component,
     ElementRef,
     EventEmitter,
-    Input,
     OnDestroy,
     Output,
     ViewChild,
     forwardRef,
 } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { AbstractControl, ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ValidatorFn } from '@angular/forms';
 import { MatOptionSelectionChange } from '@angular/material/core';
 import {
     Subject,
@@ -21,7 +20,7 @@ import {
     throttleTime,
 } from 'rxjs';
 import { LocationAutocompleteService } from '../../services/location-autocomplete.service';
-import { IGeoLocation } from './../../../../../../shared/interfaces/geo/geo-location.interface';
+import { IGeoLocation } from '@shared/interfaces';
 
 @Component({
     selector: 'app-input-location-autocomplete',
@@ -40,16 +39,14 @@ export class InputLocationAutocompleteComponent
     implements ControlValueAccessor, OnDestroy
 {
     @ViewChild('formInput') public inputRef: ElementRef<HTMLInputElement>;
-
-    @Input() public isValid: boolean;
-    @Output() public locations: EventEmitter<IGeoLocation[]> = new EventEmitter<
-        IGeoLocation[]
-    >();
+    @Output() public isValid: EventEmitter<boolean> = new EventEmitter<boolean>(true);
 
     public value: string = '';
     public autocompleteLocations: IGeoLocation[] = [];
     public isLoading: boolean = false;
     public isValidAddress: boolean = false;
+
+    public location: FormControl;
 
     private _destroy$: Subject<void> = new Subject<void>();
     private _autocompleteInputChanged$: Subject<Event> = new Subject<Event>();
@@ -63,6 +60,31 @@ export class InputLocationAutocompleteComponent
         private readonly _autocompleteService: LocationAutocompleteService
     ) {}
 
+    ngOnInit(): void {
+        this.location = new FormControl('', [this.locationValidator()]);
+    }
+
+    private locationValidator(): ValidatorFn {
+   
+        return (control: AbstractControl): { [key: string]: any } | null => {
+            const inputValue = control.value;
+
+            if(control.value === '') {
+                this.isValid.emit(true);
+                return null;
+            }
+            
+            if(this.isValidAddress) {
+                this.isValid.emit(true);
+                return null;
+            } else  {
+                this.isValid.emit(false);
+                return { invalidLocation: { value: inputValue } };
+            }
+          
+        };
+    }
+    
     public onChangeLocation(event: Event): void {
         const newValue = (event.target as HTMLInputElement).value;
         this.isValidAddress = false;
@@ -101,7 +123,6 @@ export class InputLocationAutocompleteComponent
             .pipe(tap(console.log), takeUntil(this._destroy$))
             .subscribe((locations) => {
                 this.autocompleteLocations = locations;
-                this.locations.emit(this.autocompleteLocations);
                 this.isLoading = false;
                 this._cdr.markForCheck();
             });
@@ -110,7 +131,7 @@ export class InputLocationAutocompleteComponent
     public _onInputBlur(): void {
         if (!this.isValidAddress) {
             // Clear the input value if it's not a valid selection
-            this.writeValue('');
+            // this.writeValue('');
         }
     }
 

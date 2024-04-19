@@ -1,4 +1,5 @@
-    
+
+
 <input
     placeholder="Enter City and State"
     autocomplete="off"
@@ -7,24 +8,28 @@
     [matAutocomplete]="auto"
     #formInput
     [value]="value"
+    [formControl]="location"
     (input)="onChangeLocation($event)"
     (blur)="_onInputBlur()">
     <mat-autocomplete #auto="matAutocomplete">
         @for (place of autocompleteLocations; track place.formatted) {
             <mat-option
-                [value]="place.city + ', ' + place.country"
+                [value]="place.formatted"
                 (onSelectionChange)="onSelectChange($event)">
                 <div class="wrap-select">
                     <div class="icon">
                         <mat-icon class="mat-18">location_city</mat-icon>
                     </div>
-                    <div
+                    <div class="address-line-1">
+                        {{ place.formatted }}
+                    </div>
+                    <!-- <div
                         class="address-line-1"
                         [innerHTML]="place.city | autocompleteHighlight: value">
                     </div>
                     <div class="address-line-2">
                         {{ place.country }}
-                    </div>
+                    </div> -->
                 </div>
             </mat-option>
         }

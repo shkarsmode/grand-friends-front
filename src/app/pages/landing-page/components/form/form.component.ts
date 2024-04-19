@@ -1,10 +1,8 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
 import { IContactForm, IContactFormRequest, IGeoLocation, Reasons, urlValidator } from '../../../../shared';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { ContactFormService } from './services';
-import { locationValidator } from '@shared/helpers/location.validator';
-import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-form',
@@ -34,6 +32,7 @@ export class FormComponent {
     public reasonData: Array<string> = Object.values(Reasons);
     public isSending: boolean = false;
     public isSubmitError: boolean = false;
+    public isValidLocation: boolean = false;
     // private allowedLocations: IGeoLocation[] = [];
 
     constructor(
@@ -45,7 +44,7 @@ export class FormComponent {
     ngOnInit(): void {
         this.initContactForm();
         this.resetFieldsByFormType();
-        // this.contactForm.valueChanges.subscribe(res => console.log(this.contactForm.value));
+        this.contactForm.valueChanges.subscribe(res => console.log(this.contactForm.errors));
     }
 
     private initContactForm(): void {
@@ -57,7 +56,7 @@ export class FormComponent {
           school: ['', [Validators.required, Validators.maxLength(200)]],
           organization: ['', [Validators.required, Validators.maxLength(200)]],
           website: ['', [urlValidator()]],
-          location: ['', ],
+          location: ['',],
           message: ['', [Validators.required, Validators.maxLength(500)]]
       });
     }
@@ -133,7 +132,16 @@ export class FormComponent {
         this.cdr.detectChanges();
     }
 
-   
+    
+  public onLocationValidityChange(isValid: boolean): void {
+      if (isValid) {
+        this.location.setErrors(null); // Set errors to null when location is valid
+      } else {
+          this.location.setErrors({ locationInvalid: true }); // Set errors when location is invalid
+      }
+  }
+    
+
   public get name(): FormControl {
     return this.contactForm.get('name') as FormControl;
   }

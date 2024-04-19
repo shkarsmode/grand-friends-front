@@ -25,9 +25,15 @@
     }
 }
 
-// .invalid {
-//     border: 1px solid rgba(222, 0, 93, 1)
-// }
+.invalid {
+    border: 1px solid rgba(222, 0, 93, 1)
+}
+
+
+input.ng-invalid.ng-dirty,
+input.ng-invalid.ng-touched {
+    border: 1px solid rgba(222, 0, 93, 1)
+    }
 
 .icon span {
     color: #444444;

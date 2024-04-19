@@ -48,9 +48,7 @@
                 type="email">
         </div> 
              
-        <app-input-phone-country-code formControlName="phone">
-
-        </app-input-phone-country-code>
+        <app-input-phone-country-code formControlName="phone"></app-input-phone-country-code>
     
         <div class="group" data-select="true">
             <label for="reason">Reason*</label>
@@ -140,10 +138,14 @@
         <div class="group">
             <div class="label-wrap">
                 <label for="location">Location</label>
+                <div *ngIf="location.errors" class="error-message">
+                    <span>*Select from autocomplete</span>
+                </div>
             </div>
  
             <app-input-location-autocomplete
-                formControlName="location">
+                formControlName="location"
+                (isValid)="onLocationValidityChange($event)">
             </app-input-location-autocomplete>
         </div>
     
