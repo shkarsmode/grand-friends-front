@@ -32,20 +32,23 @@
                 <label for="email">Email Address*</label>
                 <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error-message">
                     <span *ngIf="email.errors?.['required']">*Required</span>
-                    <span *ngIf="email.errors?.['email']">*Invalid email</span>
-                    <span *ngIf="email.errors?.['maxLength']">*Too long</span>
+                    <span *ngIf="email.errors?.['email']">*Incorrect email</span>
+                    <span *ngIf="email.errors?.['emailInvalid']">*Invalid email</span>
                 </div>
             </div>
             <input
+                appEmailAsyncValidator
                 id="email"
                 name="email"
                 placeholder="name@example.com"
                 class="formInput"
                 autocomplete="on"
                 formControlName="email"
-                required
                 tabindex="2"
+                (blur)="onBlurEmail()"
                 type="email">
+            
+            <mat-spinner class='spinner-input-error' *ngIf="email.errors?.['loading']"></mat-spinner>
         </div> 
              
         <app-input-phone-country-code 
@@ -183,6 +186,6 @@
         </div>
     </div>
 
-    <mat-spinner *ngIf="isSending"></mat-spinner>
+    <mat-spinner class="spinner-sending" *ngIf="isSending"></mat-spinner>
 </form>
 

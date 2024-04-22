@@ -26,26 +26,24 @@ export class ContactFormService {
     countryCode: string,
     number: string): Observable<any> {
 
-
       const params = new HttpParams()
         .set('countryCode', countryCode)
         .set('number', number)
         .set('key', this.validationApiKey);
 
-
       return this.httpClient.get<any>(this.validationPathApi + '/phone-number-validate', {
           params
       })
-      // const queryParams = new HttpParams();
+  }
 
-      // queryParams.set('countryCode', countryCode);
-      // queryParams.set('number', number);
-      // queryParams.set('key', this.validationApiKey);
+  public verifyEmail(email: string): Observable<any> {
+      const params = new HttpParams()
+        .set('emailAddress', email)
+        .set('key', this.validationApiKey );
 
-      // return this.httpClient.request<any>('get', this.validationPathApi + '/phone-number-validate', {
-      //     params: queryParams
-      //   }
-      // )
+      return this.httpClient.get<any>(this.validationPathApi + '/email-verify', {
+          params
+      })
   }
 
 }

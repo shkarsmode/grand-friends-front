@@ -40,6 +40,7 @@ import {
 import { LandingWidgetRoutingModule } from './landing-widget.routing';
 import { LandingWidgetUiComponent } from './ui';
 import { LandingWidgetComponent } from './view';
+import { EmailAsyncValidatorDirective } from '@shared/helpers/email-async-validator.directive';
 
 @NgModule({
     declarations: [
@@ -58,6 +59,7 @@ import { LandingWidgetComponent } from './view';
         InputPhoneCountryCodeComponent,
         PrivacyPolicyComponent,
         TermsConditionsComponent,
+        EmailAsyncValidatorDirective,
     ],
     imports: [
         CommonModule, 

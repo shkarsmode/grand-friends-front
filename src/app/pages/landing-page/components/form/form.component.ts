@@ -44,8 +44,17 @@ export class FormComponent {
     ngOnInit(): void {
         this.initContactForm();
         this.resetFieldsByFormType();
-        // this.contactForm.valueChanges.subscribe(res => console.log(this.contactForm.errors));
+        this.email.statusChanges.subscribe(el => {
+          this.cdr.detectChanges();
+          console.log(el, this.email.errors);
+        })
+        // this.email.
     }
+
+    public onBlurEmail(): void {
+        
+    }        
+
 
     private initContactForm(): void {
       this.contactForm = this.fb.group({
@@ -125,7 +134,6 @@ export class FormComponent {
     }
 
     private handleFormAfterSubmit(): void {
-  
         this.isSubmitError = false;
         this.isSending = false;
         this.contactForm.reset();
@@ -142,13 +150,10 @@ export class FormComponent {
   }
 
   public onPhoneValidityChange(isValid: boolean): void {
-    // console.log(isValid);
-
       if(isValid) this.phone.setErrors(null)
       else this.phone.setErrors({ phoneInvalid: true});
-    
   }
-  
+
 
   public get name(): FormControl {
     return this.contactForm.get('name') as FormControl;
