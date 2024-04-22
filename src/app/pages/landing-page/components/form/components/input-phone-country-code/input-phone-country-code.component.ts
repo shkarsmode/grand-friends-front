@@ -1,8 +1,25 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, HostListener, Inject, Input, ViewChild, forwardRef } from '@angular/core';
-import { ICountryCode } from '../../../../../../shared';
-import { AbstractControl, AsyncValidatorFn, ControlValueAccessor, FormControl, FormControlName, NG_VALUE_ACCESSOR, ValidationErrors, Validators } from '@angular/forms';
-import { Observable, catchError, debounceTime, distinctUntilChanged, map, of, switchMap, take } from 'rxjs';
+import { 
+  ChangeDetectorRef,
+  Component, 
+  ElementRef, 
+  EventEmitter, 
+  HostListener, 
+  Output, 
+  ViewChild,
+  forwardRef } from '@angular/core';
+
+import {
+  AbstractControl,
+  ControlValueAccessor, 
+  FormControl, NG_VALUE_ACCESSOR,
+  ValidatorFn, } from '@angular/forms';
+
+import { debounceTime, tap } from 'rxjs';
+
 import { ContactFormService } from '../../services';
+
+import { ICountryPhone } from '@shared/interfaces';
+
 
 type IsValid = boolean;
 
@@ -27,6 +44,8 @@ export class InputPhoneCountryCodeComponent implements ControlValueAccessor {
     }
   }
 
+  @Output() valid: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   private onChange: any = () => {};
   private onTouched: any = () => {};
 
@@ -35,7 +54,7 @@ export class InputPhoneCountryCodeComponent implements ControlValueAccessor {
   private _isValid: boolean; // input state
   public verifiedNumbers: Map<string, IsValid> = new Map();
 
-  public currentCountry: ICountryCode;
+  public currentCountry: ICountryPhone;
   public isDropdown: boolean = false;
 
   constructor(
@@ -45,20 +64,24 @@ export class InputPhoneCountryCodeComponent implements ControlValueAccessor {
 
   ngOnInit(): void {
       this.initCurrentCountry();
-      this.phoneInput = new FormControl('')
+      this.phoneInput = new FormControl('', this.validatePhoneNumber())
       this.isVerification = false;
       this.isValid = true;
+      this.phoneInput.statusChanges.subscribe(el => this.emitValidity());
   }
 
   ngAfterViewInit(): void {
-      this.listenPhoneInput();        
+      this.listenPhoneInput();       
+      this.emitValidity(); 
   }
 
   public initCurrentCountry(): void {
       this.currentCountry = {
         "name": "United States",
         "dial_code": "+1",
-        "code": "US"
+        "code": "US",
+        "suggested": true,
+        "phoneLength": 10
       }
   }
 
@@ -70,30 +93,35 @@ export class InputPhoneCountryCodeComponent implements ControlValueAccessor {
   public registerOnTouched = (fn: any) => (this.onTouched = fn);
 
 
-  public onCountryChange(event: ICountryCode): void {
+  public onCountryChange(event: ICountryPhone): void {
       this.currentCountry = event;
       this.onChange(this.getPhone)//!!!!
       this.onTouched();
       this.isDropdown = false;
-      this.startVerificationAndValidationProcess();
+      this.phoneInput.updateValueAndValidity();
+      this.processVerificationAndValidation();
   }
 
   private listenPhoneInput(): void {
       this.phoneInput
-          ?.valueChanges.pipe(debounceTime(700))
+          ?.valueChanges.pipe(
+            // tap(() => this.emitValidity()),
+            debounceTime(700)
+          )
           .subscribe((value) => {
               // this.startVerificationAndValidationProcess();
               this.handlePhoneInput(value);
               this.onChange(this.getPhone)//!!!!
               this.onTouched();
+              this.emitValidity();
           });
   }
 
   private handlePhoneInput(inputValue: string): void {
       const formattedPhoneInput = this.formatPhoneInput(inputValue);
       this.phoneInput.patchValue(formattedPhoneInput, {
-        emitEvent: false}
-      ); 
+        emitEvent: false
+      }); 
   }
 
   private formatPhoneInput(inputValue: string): string {
@@ -133,33 +161,38 @@ export class InputPhoneCountryCodeComponent implements ControlValueAccessor {
   }
 
   public onInputChange(): void {
-    this.startVerificationAndValidationProcess();
+    this.processVerificationAndValidation();
   }
 
 
   public get isValid(): boolean { return this._isValid; }
   public get isVerification(): boolean { return this._isVerification }
 
-  private set isValid(state: boolean) { this._isValid = state; }
+  private set isValid(state: boolean) { 
+    this._isValid = state;
+  }
   private set isVerification(state: boolean) { 
     this._isVerification = state 
   }
-
   public get value(): string { return this.phoneInput.value; }
 
-  private startVerificationAndValidationProcess(): void {
+  private processVerificationAndValidation(): void {
+      
       this.isVerification = false;
       this.cdr.detectChanges();
-        
+      
       // optimize verifcation
-        if(this.value == '') { this.isValid = true; return }
+        if(this.value == '' || this.phoneInput.errors) { 
+          this.isValid = true;
+          return 
+        }
 
         let currentCountry = Object.assign({}, this.currentCountry);
         let number = this.cleanPhoneInput(this.value);
         let fullNumber = this.getFullNumber(currentCountry.dial_code, number);        
 
         if(this.verifiedNumbers.has(fullNumber)) { 
-            this.isValid  = this.verifiedNumbers.get(fullNumber) as boolean;        
+            this.isValid  = this.verifiedNumbers.get(fullNumber) as boolean;
             return;
         }
 
@@ -181,80 +214,53 @@ export class InputPhoneCountryCodeComponent implements ControlValueAccessor {
 
             this.isVerification = false;
             this.cdr.detectChanges()
+            this.emitValidity();
       })
   
   }
 
 
-   
-  // private checkPhoneNumberVerification(): AsyncValidatorFn {
-  //     return (control: AbstractControl): Observable<ValidationErrors | null> => {
-  //         let number = control.value as string;
-  //         number = this.cleanPhoneInput(number);
+  public validatePhoneNumber(): ValidatorFn {
 
-  //         if (!control.valueChanges || control.pristine) {
-  //           return of(null);
-  //         } else {
+    return (control: AbstractControl) => {
+
+      const phone = this.cleanPhoneInput(control.value) as string;
       
-  //             return control.valueChanges.pipe(
-  //                 debounceTime(500),
-  //                 distinctUntilChanged(),
-  //                 // take(1),
-  //                 switchMap(() =>{ 
-  //                   console.log('switch map');
-                    
-  //                   this.isVerification = true;
-  //                   return this.contactFormService.verifyPhoneNumber(
-  //                   this.currentCountry.code,
-  //                   number
-  //                 )}),
-  //                 map(response => {
+    let countryData = Object.assign({}, this.currentCountry); // Отримання даних країни
+     
+    if (!phone || !countryData) {
+        // Якщо номер телефону або дані країни відсутні, повертаємо null (валідація не потрібна)
+        return null;
+    }
 
-  //                   this.isVerification = false;
-  //                   console.log('decided');
-                    
-  //                   const errors = !response.isValid ? { "exist": true } : null;
-  //                       this.phoneInput?.setErrors(errors);
-  //                         console.log(this.phoneInput.errors);
-  //                         console.log('map end');
-                          
-                          
-  //                       return errors;
+      const phoneLength = countryData.phoneLength;
+      if (typeof phoneLength === 'number') {
+          // Якщо вказано конкретну довжину номера
+          return phone.length === phoneLength ? null : { invalidLength: true };
+      } else if (Array.isArray(phoneLength)) {
+          // Якщо вказано діапазон довжин номера
+          const min = Math.min(...phoneLength);
+          const max = Math.max(...phoneLength);
+          return phone.length >= min && phone.length <= max ? null : { invalidLength: true };
+      } else if (countryData.min && countryData.max) {
+          // Якщо вказано мінімальну та максимальну довжину номера
+          return phone.length >= countryData.min && phone.length <= countryData.max ? null : { invalidLength: true };
+      } else {
+          // Якщо відсутня інформація про довжину номера, повертаємо помилку
+          return null
+      }
+    }
+    
+  }
 
-
-  //                     // this.isVerification = false;
-  //                     // return errors;
-  //                 }),
-  //                 catchError(() => {
-  //                     this.isVerification = false;
-  //                     console.log('catch error');
-                      
-  //                     return of(null)
-  //                 }) 
-  //             );
-  //         }
-  //     };
-  // } 
-
-  // private subscribeToPhoneControlChanges() {
-  //   this.phoneInput.statusChanges.pipe(
-  //     debounceTime(300),
-  //     distinctUntilChanged()
-  //   ).subscribe((status) => {
-  //     console.log(this.phoneInput.errors);
+  emitValidity(): void {
+      if(this.isVerification) { this.valid.emit(false); return; }
+      if(this.phoneInput.errors) { this.valid.emit(false); return; }
+      if(!this.isValid) { this.valid.emit(false); return; }
       
-  //     if (status === 'VALID') {
-  //       this.isPhoneVerified = true; // Update the flag if the phone control is valid
-  //       console.log('valid');
-        
-  //     } else {
-  //       console.log('error');
-  //       this.isPhoneVerified = false; // Update the flag if the phone control is invalid
-  //     }
-  //   });
-  // }
+      this.valid.emit(true);
+  }
   
-
 }
 
 

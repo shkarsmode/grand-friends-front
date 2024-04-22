@@ -48,7 +48,10 @@
                 type="email">
         </div> 
              
-        <app-input-phone-country-code formControlName="phone"></app-input-phone-country-code>
+        <app-input-phone-country-code 
+            formControlName="phone"
+            (valid)="onPhoneValidityChange($event)">
+        </app-input-phone-country-code>
     
         <div class="group" data-select="true">
             <label for="reason">Reason*</label>

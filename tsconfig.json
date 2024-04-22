@@ -25,7 +25,8 @@
 		],
 		"paths": {
 			"@shared/*": ["./src/app/shared/*"],
-			"@landing-blocks": ["./src/app/pages/landing-page/components"]
+			"@landing-blocks": ["./src/app/pages/landing-page/components"],
+			"@data/*": ["./src/assets/data/*"],
 		}
 	},
 	"angularCompilerOptions": {

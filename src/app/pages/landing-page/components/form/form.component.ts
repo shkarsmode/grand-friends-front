@@ -44,14 +44,14 @@ export class FormComponent {
     ngOnInit(): void {
         this.initContactForm();
         this.resetFieldsByFormType();
-        this.contactForm.valueChanges.subscribe(res => console.log(this.contactForm.errors));
+        // this.contactForm.valueChanges.subscribe(res => console.log(this.contactForm.errors));
     }
 
     private initContactForm(): void {
       this.contactForm = this.fb.group({
           name: ['', [ Validators.required, Validators.maxLength(200), Validators.minLength(3)]],
           email: ['', [Validators.required, Validators.email]],
-          phone: ['', Validators.maxLength(20)],
+          phone: ['', ],
           reason: [this.formType, Validators.required],
           school: ['', [Validators.required, Validators.maxLength(200)]],
           organization: ['', [Validators.required, Validators.maxLength(200)]],
@@ -103,11 +103,11 @@ export class FormComponent {
         this.contactFormService.submitContactForm(data).subscribe(
           {
           next: (res) => {
-            console.log(res);
+            // console.log(res);
             this.handleFormAfterSubmit();
           },
           error: (error: any) => { 
-            console.log(error);
+            // console.log(error);
             this.isSubmitError = true;
             this.isSending = false;
             this.cdr.detectChanges();
@@ -134,11 +134,16 @@ export class FormComponent {
 
     
   public onLocationValidityChange(isValid: boolean): void {
-      if (isValid) {
-        this.location.setErrors(null); // Set errors to null when location is valid
-      } else {
-          this.location.setErrors({ locationInvalid: true }); // Set errors when location is invalid
-      }
+      if (isValid) this.location.setErrors(null); // Set errors to null when location is valid
+      else this.location.setErrors({ locationInvalid: true }); // Set errors when location is invalid
+  }
+
+  public onPhoneValidityChange(isValid: boolean): void {
+    // console.log(isValid);
+    
+      if(isValid) this.phone.setErrors(null)
+      else this.phone.setErrors({ phoneInvalid: true});
+    
   }
   
 

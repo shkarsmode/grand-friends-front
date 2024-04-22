@@ -6,14 +6,19 @@
         <label for="tel-national">Phone number </label>
         @if (!isValid) {
             <div  class="error-message">
-                <span >*Invalid phone number</span>
+                <span >*Invalid number</span>
+            </div>
+        }
+        @if (phoneInput.errors) {
+            <div  class="error-message">
+                <span >*Incorrect length</span>
             </div>
         }
     </div>
 
     <div class="input-wrap" 
         #phoneWrap
-        [ngClass]="{'invalid': !isValid}">
+        [ngClass]="{'invalid': !isValid || phoneInput.errors}">
     
         <div class="country-code"
             (click)="isDropdown = !isDropdown">

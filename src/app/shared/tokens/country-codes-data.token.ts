@@ -1,5 +1,5 @@
-import { ICountryCode, ICountryCodes } from '../interfaces/country-code.interface';
+import { ICountryPhone, ICountryPhones } from '../interfaces/country-phone.interface';
 import { InjectionToken } from "@angular/core";
 
 
-export const COUNTRY_CODES_DATA = new InjectionToken<ICountryCodes>("countryCodesData");
+export const COUNTRY_PHONES_DATA = new InjectionToken<ICountryPhones>("countryPhonesData");

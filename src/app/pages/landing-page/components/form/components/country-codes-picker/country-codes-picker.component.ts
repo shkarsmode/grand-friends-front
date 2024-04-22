@@ -1,6 +1,7 @@
 import { Component, ElementRef, EventEmitter, HostListener, Inject, Input, Output, Renderer2, ViewChild } from '@angular/core';
-import { COUNTRY_CODES_DATA, ICountryCode, ICountryCodes } from '../../../../../../shared';
-import { countryCodes } from '../../../../../../../assets/data/country-codes';
+import { countryPhonesData } from '@data/country-phones.data';
+import { ICountryPhone, ICountryPhones } from '@shared/interfaces';
+import { COUNTRY_PHONES_DATA } from '@shared/tokens';
 
 @Component({
   selector: 'app-country-codes-picker',
@@ -8,24 +9,28 @@ import { countryCodes } from '../../../../../../../assets/data/country-codes';
   styleUrl: './country-codes-picker.component.scss',
   providers: [
     {
-      provide: COUNTRY_CODES_DATA, useValue: countryCodes 
+      provide: COUNTRY_PHONES_DATA, useValue: countryPhonesData
     }
   ]
 })
 export class CountryCodesPickerComponent {
 
-  @Output() public onCountryChange: EventEmitter<ICountryCode> = new EventEmitter<ICountryCode>();
+  @Output() public onCountryChange: EventEmitter<ICountryPhone> = new EventEmitter<ICountryPhone>();
 
   @ViewChild('countriesWrap') countriesWrap: ElementRef;
   @ViewChild('searchedCountriesWrap') searchedCountriesWrap: ElementRef;
 
   public searchValue: string = "";
-  public searchedCountries: ICountryCodes = [];
+  public searchedCountries: ICountryPhones = [];
 
   constructor(
       private renderer: Renderer2,
-      @Inject(COUNTRY_CODES_DATA) public countryCodes: ICountryCodes
+      @Inject(COUNTRY_PHONES_DATA) public countryCodes: ICountryPhones
   ){}
+
+  ngOnInit(): void {
+    this.sortCountriesBySuggested();
+  }
 
   ngAfterViewInit(): void {
       this.renderer.listen(this.countriesWrap.nativeElement, 'click', (event: MouseEvent) => {
@@ -72,8 +77,20 @@ export class CountryCodesPickerComponent {
   }
 
 
-  public findCountryByName(name: string): ICountryCode | null{
+  public findCountryByName(name: string): ICountryPhone | null{
       return this.countryCodes.find(el => el.name == name) || null;
+  }
+
+  private sortCountriesBySuggested(): void {
+    this.countryCodes = this.countryCodes.sort((a, b) => {
+      if (a.suggested && !b.suggested) {
+        return -1; // a is suggested, b is not
+      } else if (!a.suggested && b.suggested) {
+        return 1; // b is suggested, a is not
+      } else {
+        return 0; // both are suggested or both are not suggested
+      }
+    });
   }
 
 
