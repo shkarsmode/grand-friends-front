@@ -224,15 +224,17 @@ export class InputPhoneCountryCodeComponent implements ControlValueAccessor {
 
     return (control: AbstractControl) => {
 
-      const phone = this.cleanPhoneInput(control.value) as string;
+      let phone = control.value as string;
       
     let countryData = Object.assign({}, this.currentCountry); // Отримання даних країни
      
     if (!phone || !countryData) {
         // Якщо номер телефону або дані країни відсутні, повертаємо null (валідація не потрібна)
         return null;
-    }
+    } 
 
+      phone = this.cleanPhoneInput(phone);
+      
       const phoneLength = countryData.phoneLength;
       if (typeof phoneLength === 'number') {
           // Якщо вказано конкретну довжину номера

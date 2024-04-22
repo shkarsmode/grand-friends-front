@@ -114,15 +114,18 @@ export class FormComponent {
           }
         })
     }
-    
+
     private getDataForContactFormRequest(): IContactFormRequest {
-        return {
+      console.log(this.contactForm.value);
+        
+      return {
           email: 'naveenmurugan@gmail.com',
           data: { ...this.contactForm.value }
         }
     }
 
     private handleFormAfterSubmit(): void {
+  
         this.isSubmitError = false;
         this.isSending = false;
         this.contactForm.reset();
@@ -140,7 +143,7 @@ export class FormComponent {
 
   public onPhoneValidityChange(isValid: boolean): void {
     // console.log(isValid);
-    
+
       if(isValid) this.phone.setErrors(null)
       else this.phone.setErrors({ phoneInvalid: true});
     
