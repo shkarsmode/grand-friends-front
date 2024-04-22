@@ -4,10 +4,16 @@
 
     <div class="label-wrap">
         <label for="tel-national">Phone number </label>
-        <span></span>
+        @if (!isValid) {
+            <div  class="error-message">
+                <span >*Invalid phone number</span>
+            </div>
+        }
     </div>
 
-    <div class="input-wrap" #phoneWrap>
+    <div class="input-wrap" 
+        #phoneWrap
+        [ngClass]="{'invalid': !isValid}">
     
         <div class="country-code"
             (click)="isDropdown = !isDropdown">
@@ -23,6 +29,7 @@
             placeholder="XXX-XXX-XXXX"
             tabindex="3"
             type="text"
+            (input)="onInputChange()"
             [formControl]="phoneInput">
     
         <div class="countries-dropdown" 
@@ -33,7 +40,7 @@
         </div>
    </div>
 
- 
+   <mat-spinner *ngIf="isVerification"></mat-spinner>
     
 </div>
 

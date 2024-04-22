@@ -1,8 +1,9 @@
 import { ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
 import { IContactForm, IContactFormRequest, IGeoLocation, Reasons, urlValidator } from '../../../../shared';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { AbstractControl, AsyncValidatorFn, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { ContactFormService } from './services';
+import { Observable, debounceTime, distinctUntilChanged, map, of, switchMap, take } from 'rxjs';
 
 @Component({
   selector: 'app-form',
@@ -32,7 +33,6 @@ export class FormComponent {
     public reasonData: Array<string> = Object.values(Reasons);
     public isSending: boolean = false;
     public isSubmitError: boolean = false;
-    public isValidLocation: boolean = false;
     // private allowedLocations: IGeoLocation[] = [];
 
     constructor(
@@ -140,7 +140,7 @@ export class FormComponent {
           this.location.setErrors({ locationInvalid: true }); // Set errors when location is invalid
       }
   }
-    
+  
 
   public get name(): FormControl {
     return this.contactForm.get('name') as FormControl;

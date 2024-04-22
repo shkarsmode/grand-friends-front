@@ -32,6 +32,8 @@ import {
     GEO_API_KEY, 
     GEO_PATH_API,
     BASE_PATH_API, 
+    VALIDATION_PATH_API,
+    VALIDATION_API_KEY,
 } from '@shared/tokens';
 
 
@@ -72,6 +74,8 @@ import { LandingWidgetComponent } from './view';
     providers: [
         LocationAutocompleteService,
         ContactFormService, 
+        { provide: VALIDATION_PATH_API, useValue: environment.validationPathApi},
+        { provide: VALIDATION_API_KEY, useValue: environment.validationApiKey},
         { provide: GEO_PATH_API, useValue: environment.geoPathAPI },
         { provide: GEO_API_KEY, useValue: environment.geoApiKey },
         { provide: BASE_PATH_API, useValue: environment.basePathApi }, 
