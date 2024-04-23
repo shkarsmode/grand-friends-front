@@ -44,10 +44,10 @@ export class FormComponent {
     ngOnInit(): void {
         this.initContactForm();
         this.resetFieldsByFormType();
-        this.email.statusChanges.subscribe(el => {
-          this.cdr.detectChanges();
-          console.log(el, this.email.errors);
-        })
+        // this.email.statusChanges.subscribe(el => {
+        //   this.cdr.detectChanges();
+        //   console.log(el, this.email.errors);
+        // })
         // this.email.
     }
 

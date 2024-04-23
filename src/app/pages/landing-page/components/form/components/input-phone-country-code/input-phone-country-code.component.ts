@@ -99,7 +99,7 @@ export class InputPhoneCountryCodeComponent implements ControlValueAccessor {
       this.onTouched();
       this.isDropdown = false;
       this.phoneInput.updateValueAndValidity();
-      this.processVerificationAndValidation();
+      // this.processVerificationAndValidation();
   }
 
   private listenPhoneInput(): void {
@@ -161,7 +161,7 @@ export class InputPhoneCountryCodeComponent implements ControlValueAccessor {
   }
 
   public onInputChange(): void {
-    this.processVerificationAndValidation();
+    // this.processVerificationAndValidation();
   }
 
 
@@ -176,48 +176,48 @@ export class InputPhoneCountryCodeComponent implements ControlValueAccessor {
   }
   public get value(): string { return this.phoneInput.value; }
 
-  private processVerificationAndValidation(): void {
+  // private processVerificationAndValidation(): void {
       
-      this.isVerification = false;
-      this.cdr.detectChanges();
+  //     this.isVerification = false;
+  //     this.cdr.detectChanges();
       
-      // optimize verifcation
-        if(this.value == '' || this.phoneInput.errors) { 
-          this.isValid = true;
-          return 
-        }
+  //     // optimize verifcation
+  //       if(this.value == '' || this.phoneInput.errors) { 
+  //         this.isValid = true;
+  //         return 
+  //       }
 
-        let currentCountry = Object.assign({}, this.currentCountry);
-        let number = this.cleanPhoneInput(this.value);
-        let fullNumber = this.getFullNumber(currentCountry.dial_code, number);        
+  //       let currentCountry = Object.assign({}, this.currentCountry);
+  //       let number = this.cleanPhoneInput(this.value);
+  //       let fullNumber = this.getFullNumber(currentCountry.dial_code, number);        
 
-        if(this.verifiedNumbers.has(fullNumber)) { 
-            this.isValid  = this.verifiedNumbers.get(fullNumber) as boolean;
-            return;
-        }
+  //       if(this.verifiedNumbers.has(fullNumber)) { 
+  //           this.isValid  = this.verifiedNumbers.get(fullNumber) as boolean;
+  //           return;
+  //       }
 
-      // start verification process
-      this.isVerification = true;
-      this.cdr.detectChanges();
+  //     // start verification process
+  //     this.isVerification = true;
+  //     this.cdr.detectChanges();
       
       
-      this.contactFormService.verifyPhoneNumber(currentCountry.code, number)
-          .pipe(debounceTime(700))
-          .subscribe((res) => {
-            if(res['isValid']) {
-                this.isValid = true;
-                this.verifiedNumbers.set(fullNumber, true);
-            } else {
-                this.isValid = false;
-                this.verifiedNumbers.set(fullNumber, false);
-            }
+  //     this.contactFormService.verifyPhoneNumber(currentCountry.code, number)
+  //         .pipe(debounceTime(700))
+  //         .subscribe((res) => {
+  //           if(res['isValid']) {
+  //               this.isValid = true;
+  //               this.verifiedNumbers.set(fullNumber, true);
+  //           } else {
+  //               this.isValid = false;
+  //               this.verifiedNumbers.set(fullNumber, false);
+  //           }
 
-            this.isVerification = false;
-            this.cdr.detectChanges()
-            this.emitValidity();
-      })
+  //           this.isVerification = false;
+  //           this.cdr.detectChanges()
+  //           this.emitValidity();
+  //     })
   
-  }
+  // }
 
 
   public validatePhoneNumber(): ValidatorFn {
