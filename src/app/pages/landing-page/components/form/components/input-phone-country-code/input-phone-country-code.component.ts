@@ -19,6 +19,7 @@ import { debounceTime, tap } from 'rxjs';
 import { ContactFormService } from '../../services';
 
 import { ICountryPhone } from '@shared/interfaces';
+import { CountryCode, isValidPhoneNumber, parsePhoneNumber } from 'libphonenumber-js';
 
 
 type IsValid = boolean;
@@ -50,23 +51,15 @@ export class InputPhoneCountryCodeComponent implements ControlValueAccessor {
   private onTouched: any = () => {};
 
   public phoneInput: FormControl;
-  public _isVerification: boolean; // for loading process
-  private _isValid: boolean; // input state
-  public verifiedNumbers: Map<string, IsValid> = new Map();
 
   public currentCountry: ICountryPhone;
   public isDropdown: boolean = false;
 
-  constructor(
-    private contactFormService: ContactFormService,
-    private cdr: ChangeDetectorRef,
-  ) {}
+  constructor() {}
 
   ngOnInit(): void {
       this.initCurrentCountry();
-      this.phoneInput = new FormControl('', this.validatePhoneNumber())
-      this.isVerification = false;
-      this.isValid = true;
+      this.phoneInput = new FormControl('', [this.validate(), this.checkLength()])
       this.phoneInput.statusChanges.subscribe(el => this.emitValidity());
   }
 
@@ -99,13 +92,11 @@ export class InputPhoneCountryCodeComponent implements ControlValueAccessor {
       this.onTouched();
       this.isDropdown = false;
       this.phoneInput.updateValueAndValidity();
-      // this.processVerificationAndValidation();
   }
 
   private listenPhoneInput(): void {
       this.phoneInput
           ?.valueChanges.pipe(
-            // tap(() => this.emitValidity()),
             debounceTime(700)
           )
           .subscribe((value) => {
@@ -118,10 +109,13 @@ export class InputPhoneCountryCodeComponent implements ControlValueAccessor {
   }
 
   private handlePhoneInput(inputValue: string): void {
+
       const formattedPhoneInput = this.formatPhoneInput(inputValue);
+            
       this.phoneInput.patchValue(formattedPhoneInput, {
         emitEvent: false
-      }); 
+      });
+ 
   }
 
   private formatPhoneInput(inputValue: string): string {
@@ -139,6 +133,7 @@ export class InputPhoneCountryCodeComponent implements ControlValueAccessor {
   }
 
   private addCaratEveryThreeCharacters(inputValue: string): string {
+    
     if (inputValue.length < 4) return inputValue;
     // Add spaces every three characters
     const groups = inputValue.match(/.{1,3}/g);
@@ -149,6 +144,7 @@ export class InputPhoneCountryCodeComponent implements ControlValueAccessor {
     }, '');
 
     return formattedValue || '';
+
   }
 
   public get getPhone(): string {
@@ -165,15 +161,15 @@ export class InputPhoneCountryCodeComponent implements ControlValueAccessor {
   }
 
 
-  public get isValid(): boolean { return this._isValid; }
-  public get isVerification(): boolean { return this._isVerification }
+  // public get isValid(): boolean { return this._isValid; }
+  // public get isVerification(): boolean { return this._isVerification }
 
-  private set isValid(state: boolean) { 
-    this._isValid = state;
-  }
-  private set isVerification(state: boolean) { 
-    this._isVerification = state 
-  }
+  // private set isValid(state: boolean) { 
+  //   this._isValid = state;
+  // }
+  // private set isVerification(state: boolean) { 
+  //   this._isVerification = state 
+  // }
   public get value(): string { return this.phoneInput.value; }
 
   // private processVerificationAndValidation(): void {
@@ -220,11 +216,11 @@ export class InputPhoneCountryCodeComponent implements ControlValueAccessor {
   // }
 
 
-  public validatePhoneNumber(): ValidatorFn {
+  public checkLength(): ValidatorFn {
 
     return (control: AbstractControl) => {
 
-      let phone = control.value as string;
+    let phone = control.value as string;
       
     let countryData = Object.assign({}, this.currentCountry); // Отримання даних країни
      
@@ -255,11 +251,29 @@ export class InputPhoneCountryCodeComponent implements ControlValueAccessor {
     
   }
 
-  emitValidity(): void {
-      if(this.isVerification) { this.valid.emit(false); return; }
-      if(this.phoneInput.errors) { this.valid.emit(false); return; }
-      if(!this.isValid) { this.valid.emit(false); return; }
+  public validate(): ValidatorFn {
+
+    return (control: AbstractControl) => {
+
+      if(control.value == '') return null
+
+      let cleanedNumber = this.cleanPhoneInput(control.value);
+      // let number = parsePhoneNumber(cleanedNumber, this.currentCountry.code as CountryCode) ;
+
+      let isValid = isValidPhoneNumber(cleanedNumber, this.currentCountry.code as CountryCode)      
+      if(!isValid) return { invalid: true }
       
+      return null
+      
+
+    }
+    
+  }
+
+  emitValidity(): void {
+      // if(this.isVerification) { this.valid.emit(false); return; }
+      if(this.phoneInput.errors) { this.valid.emit(false); return; }
+      // if(!this.isValid) { this.valid.emit(false); return; }
       this.valid.emit(true);
   }
   

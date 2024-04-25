@@ -4,21 +4,22 @@
 
     <div class="label-wrap">
         <label for="tel-national">Phone number </label>
-        @if (!isValid) {
-            <div  class="error-message">
-                <span >*Invalid number</span>
-            </div>
-        }
-        @if (phoneInput.errors) {
+        @if (phoneInput.hasError('invalidLength')) {
             <div  class="error-message">
                 <span >*Incorrect length</span>
             </div>
         }
+        @else if (phoneInput.hasError('invalid')) {
+            <div  class="error-message">
+                <span >*Invalid number</span>
+            </div>
+        } 
+        
     </div>
 
     <div class="input-wrap" 
         #phoneWrap
-        [ngClass]="{'invalid': !isValid || phoneInput.errors}">
+        [ngClass]="{'invalid': phoneInput.errors}">
     
         <div class="country-code"
             (click)="isDropdown = !isDropdown">
@@ -44,8 +45,6 @@
             </app-country-codes-picker>
         </div>
    </div>
-
-   <mat-spinner *ngIf="isVerification"></mat-spinner>
     
 </div>
 
