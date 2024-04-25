@@ -32,7 +32,7 @@
                 <label for="email">Email Address*</label>
                 <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error-message">
                     <span *ngIf="email.errors?.['required']">*Required</span>
-                    <span *ngIf="email.errors?.['email']">*Incorrect email</span>
+                    <span *ngIf="email.errors?.['email'] || email.errors?.['pattern']">*Incorrect email</span>
                     <span *ngIf="email.errors?.['emailInvalid']">*Invalid email</span>
                 </div>
             </div>

@@ -9,6 +9,11 @@
                 <span >*Incorrect length</span>
             </div>
         }
+        @else if (phoneInput.hasError('impossible')) {
+            <div  class="error-message">
+                <span >*Impossible number</span>
+            </div>
+        } 
         @else if (phoneInput.hasError('invalid')) {
             <div  class="error-message">
                 <span >*Invalid number</span>

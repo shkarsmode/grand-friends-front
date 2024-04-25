@@ -19,7 +19,7 @@ import { debounceTime, tap } from 'rxjs';
 import { ContactFormService } from '../../services';
 
 import { ICountryPhone } from '@shared/interfaces';
-import { CountryCode, isValidPhoneNumber, parsePhoneNumber } from 'libphonenumber-js';
+import { CountryCode, isPossiblePhoneNumber, isValidPhoneNumber, parsePhoneNumber } from 'libphonenumber-js';
 
 
 type IsValid = boolean;
@@ -260,7 +260,10 @@ export class InputPhoneCountryCodeComponent implements ControlValueAccessor {
       let cleanedNumber = this.cleanPhoneInput(control.value);
       // let number = parsePhoneNumber(cleanedNumber, this.currentCountry.code as CountryCode) ;
 
-      let isValid = isValidPhoneNumber(cleanedNumber, this.currentCountry.code as CountryCode)      
+      let isValid = isValidPhoneNumber(cleanedNumber, this.currentCountry.code as CountryCode);
+      let isPossible = isPossiblePhoneNumber(cleanedNumber, this.currentCountry.code as CountryCode);      
+      
+      if(!isPossible) return { impossible: true }
       if(!isValid) return { invalid: true }
       
       return null
