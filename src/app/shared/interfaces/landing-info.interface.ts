@@ -24,4 +24,10 @@ export interface ILandingBlockInfo {
     formType?: Reasons,
 	injector?: Injector,
     showMoreLink?: string, 
+    linkButton?: LinkButton,    
+}
+
+export interface LinkButton {
+    text: string,
+    link: string,
 }

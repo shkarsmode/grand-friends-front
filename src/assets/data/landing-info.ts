@@ -21,7 +21,11 @@ export const landingInfo: ILandingInfo = {
                 "At the core of GrandFriends is a vision where every person's journey is honored and preserved. From the laughter of youth to the reflections of age, we believe in capturing the essence of life's stories. <br /><br />Our mission extends beyond mere conversation; it's about building a repository of human experience, the largest collection of personal biographies, told in the words of those who lived them. Because a life lived is indeed a million stories waiting to be embraced.",
             img: 'info-group-1.webp',
             isImgRight: true,
-            showMoreLink: '/about'
+            showMoreLink: '/about',
+            linkButton: {
+                text: "The GrandFriends Story",
+                link: '/about',
+            }
         },
         {
             tag: LandingBlocks.InfoBlock,
@@ -38,7 +42,11 @@ export const landingInfo: ILandingInfo = {
                 "Our platform stands as a beacon for communities striving to weave tighter bonds of understanding and respect. <br /><br />By inviting seniors, cultural centers, and city organizations to join, we foster an environment where every elder's story is a lesson, and every young listener, a keeper of legacy. GrandFriends revitalizes the social fabric, one story at a time.",
             img: 'info-group-3.webp',
             isImgRight: true,
-            showMoreLink: '/community'
+            showMoreLink: '/community',
+            linkButton: {
+                text: "For Community",
+                link: '/about',
+            }
         },
         {
             tag: LandingBlocks.InfoBlock,
@@ -48,7 +56,12 @@ export const landingInfo: ILandingInfo = {
             img: 'info-group-4.webp',
             isImgRight: false,
             isAdditionalPadding: true,
-            showMoreLink: '/schools'
+            showMoreLink: '/schools',
+            linkButton: {
+                text: "For Schools",
+                link: '/schools',
+            }
+    
         },
         {
             tag: LandingBlocks.AdsBlock,

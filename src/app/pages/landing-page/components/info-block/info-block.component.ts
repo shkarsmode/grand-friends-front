@@ -25,7 +25,7 @@ export class InfoBlockComponent extends CommonLandingComponentClass {
     }
     
     public onShowMoreClick(): void {
-        this.router.navigate([this.data.showMoreLink]);
+        this.router.navigate([this.data.linkButton?.link]);
     }
 
     public get isShowMore(): boolean { return 'showMoreLink' in this.data;}
