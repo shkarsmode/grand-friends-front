@@ -11,6 +11,14 @@ export class MainBannerComponent extends CommonLandingComponentClass {
 	constructor(inject: Injector) {
 		super(inject);
 	}
+
+	get screenWidth() { return window.innerWidth; }
+
+	ngOnInit(): void {
+		console.log(window.innerWidth);
+		
+	}
+
 }
 
 

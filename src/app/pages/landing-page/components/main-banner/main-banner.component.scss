@@ -72,6 +72,16 @@ h1 {
     .buttons img:last-child {
         display: none;
     }
+
+    img {
+        width: 100% !important;
+        max-width: 280px;
+        height: 64px !important;
+        &:hover {
+            box-shadow: 0px 4px 20px 0px #2D2D4133;
+             transform: translateY(-5px);
+        }
+    }
 }
 
 @media screen and (max-width: 400px) {}
