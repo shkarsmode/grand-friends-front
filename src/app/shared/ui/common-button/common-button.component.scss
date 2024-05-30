@@ -7,7 +7,7 @@
 
 button {
     width: 100%;
-    max-width: 240px;
+    max-width: 280px;
     height: 72px;
     background-color: #5D05EC;
     outline: none;
@@ -37,4 +37,12 @@ button {
         // background: rgba(34, 21, 56, 1);
     }
 
+}
+
+
+@media screen and (max-width: 550px) {
+    button {
+        max-width: 280px;
+        height: 64px;
+    }
 }
